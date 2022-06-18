@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Cadastro - Library System</title>
+		<meta charset="UTF-8">
+	</head>
+
+	<body>
+	
+		<form th:action="@{/user/processRegister}" method="post" th:object="${user}">
+		
+			nome: <input th:field="*{name}" type="text"/> <br>
+			
+			sobrenome: <input th:field="*{lastName}"  type="text"/> <br>
+			
+			<br><hr><br>
+			
+			cidade: <input th:field="*{address.city}"  type="text"/> <br>
+			
+			estado: <select> 
+				<option>estado 1</option>
+			</select>
+			<br>
+			
+			endereço: <input th:field="*{address.addressName}"  type="text"/> <br>
+			Bairro: <input th:field="*{address.district}" type="text"/> <br>
+			Complemento: <input th:field="*{address.complement}" type="text"/> <br>
+			Numero: <input th:field="*{address.number}" type="text"/> <br>
+			
+			
+			<br><hr><br>
+			
+			email: <input th:field="*{userLogin.email}" type="email"/> <br>
+			confirmar email: <input type="email"/> <br>
+			
+			senha: <input th:field="*{userLogin.password}" type="password"/> <br>
+			
+			confirmar senha: <input type="password"/> <br>
+			
+			<button type="submit">Criar conta!</button>
+		
+		</form>
+	
+	</body>
+</html>

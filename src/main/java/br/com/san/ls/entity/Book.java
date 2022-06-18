@@ -29,17 +29,18 @@ public class Book implements Serializable {
 	private Integer id;
 
 	private String title;
-
 	private String isbn;
 	private String edition;
 
 	@Column(length = 500)
 	private String description;
+	
 	@Column(name = "path_cloak")
 	private String pathCloak;
 
 	private Integer year;
 	@Column(name = "publish_company")
+	
 	private String publishCompany;
 
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })

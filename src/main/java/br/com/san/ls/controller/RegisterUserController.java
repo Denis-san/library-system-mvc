@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.san.ls.entity.User;
+import br.com.san.ls.dto.UserDTO;
 
 @Controller
 @RequestMapping("/user")
@@ -15,15 +15,16 @@ public class RegisterUserController {
 	@GetMapping("/new")
 	public ModelAndView showRegisterUserForm() {
 		ModelAndView modelAndView = new ModelAndView("/pages/user/register-user");
-		modelAndView.addObject("user", new User());
+		modelAndView.addObject("user", new UserDTO());
 		return modelAndView;
 	}
 	
 	@PostMapping("/processRegister")
-	public String processRegister(User user) {
+	public String processRegister(UserDTO userDTO) {
 		
-		System.out.println(user.toString());
 		
 		return "/pages/user/email-confirmation";
 	}
+	
+	
 }

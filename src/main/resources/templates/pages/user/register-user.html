@@ -16,27 +16,27 @@
 			
 			<br><hr><br>
 			
-			cidade: <input th:field="*{address.city}"  type="text"/> <br>
+			cidade: <input th:field="*{addressDTO.city}"  type="text"/> <br>
 			
-			estado: <select> 
-				<option>estado 1</option>
+			estado: <select th:field="*{addressDTO.state}"> 
+				<option th:each="stateOpt : ${T(br.com.san.ls.entity.enums.State).values()}"
+						th:value="${stateOpt}" th:text="${stateOpt.getUf}"></option>
 			</select>
 			<br>
 			
-			endereço: <input th:field="*{address.addressName}"  type="text"/> <br>
-			Bairro: <input th:field="*{address.district}" type="text"/> <br>
-			Complemento: <input th:field="*{address.complement}" type="text"/> <br>
-			Numero: <input th:field="*{address.number}" type="text"/> <br>
+			endereço: <input th:field="*{addressDTO.addressName}"  type="text"/> <br>
+			Bairro: <input th:field="*{addressDTO.district}" type="text"/> <br>
+			Complemento: <input th:field="*{addressDTO.complement}" type="text"/> <br>
+			Numero: <input th:field="*{addressDTO.number}" type="text"/> <br>
 			
 			
 			<br><hr><br>
 			
-			email: <input th:field="*{userLogin.email}" type="email"/> <br>
-			confirmar email: <input type="email"/> <br>
+			email: <input th:field="*{userLoginDTO.email}" type="email"/> <br>
+			confirmar email: <input th:field="*{userLoginDTO.verifyEmail}" type="email"/> <br>
 			
-			senha: <input th:field="*{userLogin.password}" type="password"/> <br>
-			
-			confirmar senha: <input type="password"/> <br>
+			senha: <input th:field="*{userLoginDTO.password}" type="password"/> <br>
+			confirmar senha:  <input th:field="*{userLoginDTO.verifyPassword}" type="password"/> <br>
 			
 			<button type="submit">Criar conta!</button>
 		

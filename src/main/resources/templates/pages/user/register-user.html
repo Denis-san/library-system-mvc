@@ -1,68 +1,282 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<title>Cadastro - Library System</title>
-	<meta charset="UTF-8">
+<head
+	th:replace="/fragments/head :: head(title='Cadastre-se - Library System', stylePath='/style/style_register.css', scriptPath='/script/script_register.js')">
 </head>
 
-<body>
+<body class="bg-light" onload="scrollDown()">
 
-	<form th:action="@{/user/processRegister}" method="post" th:object="${user}">
+	<div th:insert="/fragments/menu :: menu"></div>
 
-		nome: <input th:field="*{name}" type="text">
-		<div th:errors="*{name}"></div> <br>
+	<main>
+		<div class="container py-4 mt-5">
+			<div class=" mb-4 bg-white shadow-lg rounded-3">
+				<div class="row align-items-md-stretch">
+					<div class="col-md-6" id="leftSideRegister">
 
-		sobrenome: <input th:field="*{lastName}" type="text">
-		<div th:errors="*{lastName}"></div> <br>
+						<a class="nav-link active mt-4 mb-5 mx-4" aria-current="page" href="/">
+							<img src="/assets/icons/logo-side-duotune.png"
+								th:src="@{/assets/icons/logo-side-duotune.png}" alt="logo duotune userLoginDTO">
+							Library System
+						</a>
 
-		<br>
-		<hr><br>
+					</div>
+					<div class="col-md-6">
 
-		cidade: <input th:field="*{addressDTO.city}" type="text">
-		<div th:errors="*{addressDTO.city}"></div> <br>
+						<div class="mt-4 mb-5 mx-4 text-end">
+							<h6>Já possui uma conta? <a href="/user/userLoginDTO" th:href="@{/user/userLoginDTO}"
+									class="text-reset">Faça login</a></h6>
+						</div>
 
-		estado: <select th:field="*{addressDTO.state}">
-			<option th:value="${null}">UF</option>
-			<option th:each="stateOpt : ${T(br.com.san.ls.entity.enums.State).values()}" th:value="${stateOpt}"
-				th:text="${stateOpt.getUf}"></option>
-		</select>
-		<div th:errors="*{addressDTO.state}"></div> <br>
+						<div class="h-100 pt-3 px-5 ">
+							<div>
+								<form action="#" th:action="@{/user/processRegister}" th:object="${user}"
+									method="post">
 
-		endereço: <input th:field="*{addressDTO.addressName}" type="text" />
-		<div th:errors="*{addressDTO.addressName}"></div> <br>
+									<div id="carouselExampleControlsNoTouching" class="carousel slide"
+										data-bs-touch="false" data-bs-interval="false">
+										<div class="carousel-inner">
 
-		Bairro: <input th:field="*{addressDTO.district}" type="text" />
-		<div th:errors="*{addressDTO.district}"></div> <br>
+											<div class="carousel-item active pb-5">
+												<h2 class="text-muted fw-normal ">Realize seu cadastro!</h2>
+												<h6 class="text-muted mb-5">Primeiro, nos informe seu nome e sobrenome:
+												</h6>
 
-		Complemento: <input th:field="*{addressDTO.complement}" type="text" />
-		<div th:errors="*{addressDTO.complement}"></div> <br>
+												<div class="mb-3">
+													<label class="form-label">Nome</label>
+													<input type="text" placeholder="Nome" th:field="*{name}"
+														class="form-control" th:errorclass="is-invalid" />
+													<div class="invalid-feedback" th:errors="*{name}"></div>
+													<div id="nameHelp" class="form-text">Informe seu primeiro nome, seu
+														sobrenome vem logo abaixo :)</div>
+												</div>
 
-		Numero: <input th:field="*{addressDTO.number}" type="text" />
-		<div th:errors="*{addressDTO.number}"></div> <br>
+												<div class="mb-3">
+													<label class="form-label">Sobrenome</label>
+													<input type="text" placeholder="Sobrenome" th:field="*{lastName}"
+														class="form-control" th:errorclass="is-invalid" />
+													<div class="invalid-feedback" th:errors="*{lastName}"></div>
+												</div>
 
 
-		<br>
-		<hr><br>
+												<div class="py-3">
+													<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+														<button class="btn btn-success" type="button"
+															data-bs-target="#carouselExampleControlsNoTouching"
+															data-bs-slide="next">Próximo</button>
+													</div>
+												</div>
 
-		email: <input th:field="*{userLoginDTO.email}" type="email" />
-		<div th:errors="*{userLoginDTO.email}"></div> <br>
+												<hr>
 
-		confirmar email: <input th:field="*{userLoginDTO.verifyEmail}" type="email" />
-		<div th:errors="*{userLoginDTO.verifyEmail}"></div> <br>
+												<div class="text-muted mt-3 text-center">
+													<h6>Ou faça cadastro com:</h6>
+												</div>
+												<div class="text-muted text-center mt-3">
 
-		senha: <input th:field="*{userLoginDTO.password}" type="password" />
-		<div th:errors="*{userLoginDTO.password}"></div> <br>
+													<button type="button" class="btn btn-primary">
+														<i class="bi bi-facebook"></i>
+													</button>
 
-		confirmar senha: <input th:field="*{userLoginDTO.verifyPassword}" type="password" />
-		<div th:errors="*{userLoginDTO.verifyPassword}"></div> <br>
-	
-		<div th:errors="*{userLoginDTO}"></div>
-		
-		<button type="submit">Criar conta!</button>
+													<button type="button" class="btn btn-primary">
+														<i class="bi bi-twitter"></i>
+													</button>
 
-	</form>
+													<button type="button" class="btn btn-danger">
+														<i class="bi bi-google"></i>
+													</button>
 
+												</div>
+											</div>
+
+
+											<div class="carousel-item">
+
+
+
+												<h6 class="mb-4">Nome legal! Nos conte mais sobre de onde você é: </h6>
+
+
+												<div class="row g-3">
+
+													<div class="col-md-8">
+														<label class="form-label">Cidade</label>
+														<input type="text" placeholder="Cidade"
+															th:field="*{addressDTO.city}" class="form-control"
+															th:errorclass="is-invalid" />
+														<div class="invalid-feedback" th:errors="*{addressDTO.city}"></div>
+													</div>
+
+													<div class="col-md-4">
+														<label class="form-label">Estado</label>
+														<select class="form-select" name="state"
+															th:field="*{addressDTO.state}" th:errorclass="is-invalid">
+															<option th:value="${null}">Selecione</option>
+															<option
+																th:each="stateOpt : ${T(br.com.san.ls.entity.enums.State).values()}"
+																th:value="${stateOpt}" th:text="${stateOpt.getState}"></option>
+
+														</select>
+														<div class="invalid-feedback" th:errors="*{addressDTO.state}">
+														</div>
+
+													</div>
+
+													<div class="col-12">
+														<label class="form-label">Endereço</label>
+														<input type="text" placeholder="Endereço"
+															th:field="*{addressDTO.addressName}" class="form-control"
+															th:errorclass="is-invalid" />
+														<div class="invalid-feedback" th:errors="*{addressDTO.addressName}">
+														</div>
+
+													</div>
+
+													<div class="col-md-6">
+														<label for="inputBairro" class="form-label">Bairro</label>
+														<input type="text" placeholder="Bairro"
+															th:field="*{addressDTO.district}" class="form-control"
+															th:errorclass="is-invalid" />
+														<div class="invalid-feedback" th:errors="*{addressDTO.district}">
+														</div>
+													</div>
+
+													<div class="col-md-4">
+														<label for="inputComplemento"
+															class="form-label">Complemento</label>
+														<input type="text" placeholder="Casa, Apartamento..."
+															th:field="*{addressDTO.complement}" class="form-control"
+															th:errorclass="is-invalid" />
+														<div class="invalid-feedback" th:errors="*{addressDTO.complement}">
+														</div>
+													</div>
+
+													<div class="col-md-2">
+														<label for="inputNumbEndereco" class="form-label">Número</label>
+														<input type="text" placeholder="123"
+															th:field="*{addressDTO.number}" class="form-control"
+															th:errorclass="is-invalid" />
+														<div class="invalid-feedback" th:errors="*{addressDTO.number}">
+														</div>
+													</div>
+
+
+													<div class="py-3">
+														<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+															<button class="btn btn-outline-secondary me-md-2"
+																type="button"
+																data-bs-target="#carouselExampleControlsNoTouching"
+																data-bs-slide="prev">Voltar</button>
+															<button class="btn btn-success" type="button"
+																data-bs-target="#carouselExampleControlsNoTouching"
+																data-bs-slide="next">Próximo</button>
+														</div>
+													</div>
+
+													<hr>
+
+													<div class="text-muted text-center">
+														<h6>Ou faça cadastro com:</h6>
+													</div>
+													<div class="text-muted text-center mb-5">
+														<button class="btn btn-primary"><i
+																class="bi bi-facebook"></i></button>
+														<button class="btn btn-primary"><i
+																class="bi bi-twitter"></i></button>
+														<button class="btn btn-danger"><i
+																class="bi bi-google"></i></button>
+													</div>
+
+												</div>
+											</div>
+
+											<div class="carousel-item">
+
+												<h6>Insira um email e crie uma senha para acessar sua conta :)</h6>
+												
+												<div class="py-3 text-danger" th:errors="*{userLoginDTO}">
+												</div>
+
+												<div class="mb-3">
+													<label for="inputEmail" class="form-label">Email</label>
+													<input type="text" placeholder="Email" th:field="*{userLoginDTO.email}"
+														class="form-control" th:errorclass="is-invalid" />
+
+													<div class="invalid-feedback" th:errors="*{userLoginDTO.email}"></div>
+													<div id="emailHelp" class="form-text">Informe um e-mail válido,
+														confirme-o logo abaixo.</div>
+												</div>
+
+
+												<div class="mb-3">
+													<label for="inputConfEmail" class="form-label">Confirme o
+														E-mail</label>
+													<input type="text" placeholder="Confirme o Email"
+														th:field="*{userLoginDTO.verifyEmail}" class="form-control"
+														th:errorclass="is-invalid" />
+													<div class="invalid-feedback" th:errors="*{userLoginDTO.verifyEmail}">
+													</div>
+
+												</div>
+
+
+												<div class="mb-3">
+													<label for="inpuPassword" class="form-label">Senha</label>
+													<input type="password" class="form-control" placeholder="Senha"
+														th:field="*{userLoginDTO.password}" th:errorclass="is-invalid">
+													<div class="invalid-feedback" th:errors="*{userLoginDTO.password}"></div>
+													<div id="senhaHelp" class="form-text">*A senha deve conter no mínimo
+														8 dígitos</div>
+													<div id="senhaHelp" class="form-text">*Uma dica: use combinações com
+														números e caracteres especiais!</div>
+												</div>
+
+												<div class="mb-3">
+													<label for="inputConfPassword" class="form-label">Confirme a
+														senha</label>
+													<input type="password" class="form-control"
+														placeholder="Confirme a senha"
+														th:field="*{userLoginDTO.verifyPassword}" th:errorclass="is-invalid">
+													<div class="invalid-feedback" th:errors="*{userLoginDTO.verifyPassword}">
+													</div>
+
+												</div>
+
+												
+
+												<div class="py-4">
+													<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+														<button class="btn btn-outline-secondary me-md-2" type="button"
+															data-bs-target="#carouselExampleControlsNoTouching"
+															data-bs-slide="prev">Voltar</button>
+														<button class="btn btn-success" type="submit">Criar
+															Conta!</button>
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+
+									</div>
+							</div>
+
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<hr class="featurette-divider mx-5">
+
+
+		<div th:insert="/fragments/footer :: footer"></div>
+		</div>
+	</main>
 
 
 </body>

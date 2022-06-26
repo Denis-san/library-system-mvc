@@ -2,6 +2,9 @@ package br.com.san.ls.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import br.com.san.ls.entity.Address;
 import br.com.san.ls.entity.enums.State;
 
@@ -9,14 +12,21 @@ public class AddressDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private Integer id;
+	
+	@NotBlank
 	private String city;
+	
+	@NotBlank
 	private String addressName;
 
+	@NotBlank
 	private String district;
+	@NotBlank
 	private String complement;
-
 	private Integer number;
-
+	
+	@NotNull(message = "você deve selecionar um")
 	private State state;
 
 	public AddressDTO() {
@@ -34,6 +44,10 @@ public class AddressDTO implements Serializable {
 		this.state = state;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+	
 	public String getCity() {
 		return city;
 	}

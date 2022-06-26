@@ -1,46 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<title>Cadastro - Library System</title>
-		<meta charset="UTF-8">
-	</head>
+<head>
+	<title>Cadastro - Library System</title>
+	<meta charset="UTF-8">
+</head>
 
-	<body>
+<body>
+
+	<form th:action="@{/user/processRegister}" method="post" th:object="${user}">
+
+		nome: <input th:field="*{name}" type="text">
+		<div th:errors="*{name}"></div> <br>
+
+		sobrenome: <input th:field="*{lastName}" type="text">
+		<div th:errors="*{lastName}"></div> <br>
+
+		<br>
+		<hr><br>
+
+		cidade: <input th:field="*{addressDTO.city}" type="text">
+		<div th:errors="*{addressDTO.city}"></div> <br>
+
+		estado: <select th:field="*{addressDTO.state}">
+			<option th:value="${null}">UF</option>
+			<option th:each="stateOpt : ${T(br.com.san.ls.entity.enums.State).values()}" th:value="${stateOpt}"
+				th:text="${stateOpt.getUf}"></option>
+		</select>
+		<div th:errors="*{addressDTO.state}"></div> <br>
+
+		endereço: <input th:field="*{addressDTO.addressName}" type="text" />
+		<div th:errors="*{addressDTO.addressName}"></div> <br>
+
+		Bairro: <input th:field="*{addressDTO.district}" type="text" />
+		<div th:errors="*{addressDTO.district}"></div> <br>
+
+		Complemento: <input th:field="*{addressDTO.complement}" type="text" />
+		<div th:errors="*{addressDTO.complement}"></div> <br>
+
+		Numero: <input th:field="*{addressDTO.number}" type="text" />
+		<div th:errors="*{addressDTO.number}"></div> <br>
+
+
+		<br>
+		<hr><br>
+
+		email: <input th:field="*{userLoginDTO.email}" type="email" />
+		<div th:errors="*{userLoginDTO.email}"></div> <br>
+
+		confirmar email: <input th:field="*{userLoginDTO.verifyEmail}" type="email" />
+		<div th:errors="*{userLoginDTO.verifyEmail}"></div> <br>
+
+		senha: <input th:field="*{userLoginDTO.password}" type="password" />
+		<div th:errors="*{userLoginDTO.password}"></div> <br>
+
+		confirmar senha: <input th:field="*{userLoginDTO.verifyPassword}" type="password" />
+		<div th:errors="*{userLoginDTO.verifyPassword}"></div> <br>
 	
-		<form th:action="@{/user/processRegister}" method="post" th:object="${user}">
+		<div th:errors="*{userLoginDTO}"></div>
 		
-			nome: <input th:field="*{name}" type="text"/> <br>
-			
-			sobrenome: <input th:field="*{lastName}"  type="text"/> <br>
-			
-			<br><hr><br>
-			
-			cidade: <input th:field="*{addressDTO.city}"  type="text"/> <br>
-			
-			estado: <select th:field="*{addressDTO.state}"> 
-				<option th:each="stateOpt : ${T(br.com.san.ls.entity.enums.State).values()}"
-						th:value="${stateOpt}" th:text="${stateOpt.getUf}"></option>
-			</select>
-			<br>
-			
-			endereço: <input th:field="*{addressDTO.addressName}"  type="text"/> <br>
-			Bairro: <input th:field="*{addressDTO.district}" type="text"/> <br>
-			Complemento: <input th:field="*{addressDTO.complement}" type="text"/> <br>
-			Numero: <input th:field="*{addressDTO.number}" type="text"/> <br>
-			
-			
-			<br><hr><br>
-			
-			email: <input th:field="*{userLoginDTO.email}" type="email"/> <br>
-			confirmar email: <input th:field="*{userLoginDTO.verifyEmail}" type="email"/> <br>
-			
-			senha: <input th:field="*{userLoginDTO.password}" type="password"/> <br>
-			confirmar senha:  <input th:field="*{userLoginDTO.verifyPassword}" type="password"/> <br>
-			
-			<button type="submit">Criar conta!</button>
-		
-		</form>
-	
-	</body>
+		<button type="submit">Criar conta!</button>
+
+	</form>
+
+
+
+</body>
+
 </html>

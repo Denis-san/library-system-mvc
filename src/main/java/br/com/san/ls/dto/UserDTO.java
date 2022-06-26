@@ -2,6 +2,9 @@ package br.com.san.ls.dto;
 
 import java.io.Serializable;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+
 import br.com.san.ls.entity.User;
 
 public class UserDTO implements Serializable {
@@ -9,9 +12,13 @@ public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
+	@NotBlank
 	private String name;
+	@NotBlank
 	private String lastName;
+	@Valid
 	private AddressDTO addressDTO;
+	@Valid
 	private UserLoginDTO userLoginDTO;
 
 	public UserDTO() {

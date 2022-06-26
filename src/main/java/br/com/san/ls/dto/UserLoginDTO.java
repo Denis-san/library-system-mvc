@@ -2,16 +2,32 @@ package br.com.san.ls.dto;
 
 import java.util.Objects;
 
-import br.com.san.ls.entity.UserLogin;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.Length;
+
+import br.com.san.ls.entity.UserLogin;
+import br.com.san.ls.validation.FieldsMatch;
+
+@FieldsMatch.Fields({
+	@FieldsMatch(field = "email", fieldVerify = "verifyEmail", message = "Os emails não correspondem!"),
+	@FieldsMatch(field = "password", fieldVerify = "verifyPassword", message = "As senhas não correspondem!") })
 public class UserLoginDTO {
 
+	private Integer id;
+	
+	@NotBlank
+	@Email
 	private String email;
-
+	@NotBlank
+	@Email
 	private String verifyEmail;
-
+	@NotBlank
+	@Length(min = 8, message = "Deve conter no mínimo 8 caracteres")
 	private String password;
-
+	@NotBlank
+	@Length(min = 8, message = "Deve conter no mínimo 8 caracteres")
 	private String verifyPassword;
 
 	private String codeLogin;
@@ -31,6 +47,10 @@ public class UserLoginDTO {
 		this.verifyPassword = verifyPassword;
 		this.codeLogin = codeLogin;
 		this.verified = verified;
+	}
+	
+	public Integer getId() {
+		return id;
 	}
 
 	public String getEmail() {

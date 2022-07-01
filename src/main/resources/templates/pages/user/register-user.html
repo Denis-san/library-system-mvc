@@ -214,8 +214,10 @@
 														E-mail</label>
 													<input type="text" placeholder="Confirme o Email"
 														th:field="*{userLoginDTO.verifyEmail}" class="form-control"
-														th:errorclass="is-invalid" />
-													<div class="invalid-feedback" th:errors="*{userLoginDTO.verifyEmail}">
+														th:errorclass="is-invalid" th:classappend="${emailVerifyError} ? is-invalid">
+													<div class="invalid-feedback" th:errors="*{userLoginDTO.verifyEmail}"></div>
+													<div class="invalid-feedback" th:if="${emailVerifyError}">
+														<span th:text="${emailVerifyError}"></span>
 													</div>
 
 												</div>
@@ -237,8 +239,10 @@
 														senha</label>
 													<input type="password" class="form-control"
 														placeholder="Confirme a senha"
-														th:field="*{userLoginDTO.verifyPassword}" th:errorclass="is-invalid">
-													<div class="invalid-feedback" th:errors="*{userLoginDTO.verifyPassword}">
+														th:field="*{userLoginDTO.verifyPassword}" th:errorclass="is-invalid" th:classappend="${passwordVerifyError} ? is-invalid">
+													<div class="invalid-feedback" th:errors="*{userLoginDTO.verifyPassword}"></div>
+													<div class="invalid-feedback" th:if="${passwordVerifyError}">
+														<span th:text="${passwordVerifyError}"></span>
 													</div>
 
 												</div>

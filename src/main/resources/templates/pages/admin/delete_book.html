@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head
+	th:replace="/fragments/head :: head(title='Remover cadastros de livros', stylePath='/style/style_book_delete.css', scriptPath='')">
+</head>
+
+<body>
+
+	<div th:insert="/fragments/menu_admin :: menu"></div>
+
+    <div class="container mt-4">
+        <div class="input-group input-group border rounded-pill">
+            <input id="inputSearch" type="text" class="form-control border-0 rounded-pill"
+                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+
+            <a href="/book/"
+                class="text-decoration-none input-group-text border-0 rounded-pill bg-white">
+                <span id="inputGroup-sizing-lg"><i class="bi bi-search"></i></span>
+            </a>
+        </div>
+
+       <div th:replace="/fragments/admin_html_fragments/table_fragment_book :: tableFragmentBook"></div>
+       
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Book title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- form fragment  -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cacelar</button>
+                        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

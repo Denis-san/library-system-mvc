@@ -17,7 +17,7 @@ public class BookController {
 	
 	@Autowired
 	private BookService bookService;
-
+	
 	@RequestMapping("/search")
 	public ModelAndView searchBook(@RequestParam(name = "search") String search) {
 		ModelAndView mv = new ModelAndView("/pages/book/search");

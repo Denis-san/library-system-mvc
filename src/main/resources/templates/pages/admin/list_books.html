@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head
+	th:replace="/fragments/head :: head(title='Listar cadastros de livros - Library System', stylePath='/style/style_book_list.css', scriptPath='')">
+</head>
+
+<body>
+
+	<div th:insert="/fragments/menu_admin :: menu"></div>
+
+	<div class="container mt-4">
+		<div class="input-group input-group border rounded-pill">
+			<input id="inputSearch" type="text" class="form-control border-0 rounded-pill"
+				aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+
+			<a href="/book/searc?='Sherlock+Holmes'"
+				class="text-decoration-none input-group-text border-0 rounded-pill bg-white">
+				<span id="inputGroup-sizing-lg"><i class="bi bi-search"></i></span>
+			</a>
+		</div>
+
+		<div th:replace="/fragments/admin_html_fragments/table_fragment_book :: tableFragmentBook"></div>
+
+		<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header border-0">
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="card border-0 mb-3 card-info">
+							<div class="row g-0">
+								<div class="col-md-4 ps-5">
+									<img src="../../assets/books-templates/sherlock.png" class="img-fluid " alt="...">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<h5 class="card-title fs-2 fw-bolder">Um estudo em vermelho - Sherlock Holmes
+										</h5>
+
+
+										<p class="card-text">
+											<a href="author">Arthur Conan Doyle </a>
+
+											<i class="bi bi-star-fill ms-3"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+											<i class="bi bi-star-fill"></i>
+
+										</p>
+
+										<div class="fw-bold">
+											<p>Ano: <span class="fw-normal">1999</span></p>
+											<p>Editora: <span class="fw-normal">Brazilian Inc.</span></p>
+											<p>Idioma: <span class="fw-normal">Portugues-br</span></p>
+											<p>Número de páginas: <span class="fw-normal">198</span></p>
+											<p>Edição: <span class="fw-normal">1º</span></p>
+											<p>Estoque: <span class="fw-normal">4 Unidades</span></p>
+										</div>
+
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-md-6">
+													<p class="text-success"><i class="bi bi-check-circle"></i>
+														Disponível para empréstimo
+													</p>
+												</div>
+												<div class="col-md-6">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="accordion accordion-flush" id="accordionFlushExample">
+								<div class=" card-info">
+									<h2 class="accordion-header card-info" id="flush-headingOne">
+										<button class="w-100 btn py-1 fw-normal  card-info" type="button"
+											data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+											aria-expanded="false" aria-controls="flush-collapseOne">
+											Descrição &#8964;
+										</button>
+									</h2>
+									<div id="flush-collapseOne" class="accordion-collapse collapse bg-transparent"
+										aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+										<div class="accordion-body bg-transparent">
+											<p>This is a wider card with supporting text below as a natural lead-in to
+												additional
+												content. This content is a little bit longer.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Pronto</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
+			<li class="page-item disabled">
+				<a class="page-link">Previous</a>
+			</li>
+			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item">
+				<a class="page-link" href="#">Next</a>
+			</li>
+		</ul>
+	</nav>
+
+</body>
+
+</html>

@@ -19,6 +19,11 @@ public class BookServiceImpl implements BookService{
 	public List<Book> search(String search) {
 		return bookDao.search(search);
 	}
+
+	@Override
+	public List<Book> getAllBooks() {
+		return bookDao.allBooks();
+	}
 	
 	
 }

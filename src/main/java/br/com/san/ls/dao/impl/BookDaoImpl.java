@@ -16,15 +16,22 @@ public class BookDaoImpl implements BookDao {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Override
 	public List<Book> search(String search) {
-		
-		TypedQuery<Book> query = entityManager.createQuery("SELECT b FROM Book WHERE LOWER(b.title) LIKE :search ORDER BY b.title", Book.class);
+
+		TypedQuery<Book> query = entityManager
+				.createQuery("SELECT b FROM Book WHERE LOWER(b.title) LIKE :search ORDER BY b.title", Book.class);
 		query.setParameter("search", "%" + search + "%");
 
 		return query.getResultList();
-		
+
+	}
+
+	@Override
+	public List<Book> allBooks() {
+		TypedQuery<Book> query = entityManager.createQuery("SELECT b FROM Book b", Book.class);
+		return query.getResultList();
 	}
 
 }

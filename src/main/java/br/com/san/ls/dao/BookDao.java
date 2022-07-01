@@ -7,5 +7,7 @@ import br.com.san.ls.entity.Book;
 public interface BookDao {
 	
 	public List<Book> search(String search);
+
+	public List<Book> allBooks();
 	
 }

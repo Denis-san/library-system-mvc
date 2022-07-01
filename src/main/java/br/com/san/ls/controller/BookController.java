@@ -20,7 +20,7 @@ public class BookController {
 
 	@RequestMapping("/search")
 	public ModelAndView searchBook(@RequestParam(name = "search") String search) {
-		ModelAndView mv = new ModelAndView("/book/search");
+		ModelAndView mv = new ModelAndView("/pages/book/search");
 
 		List<Book> results;
 

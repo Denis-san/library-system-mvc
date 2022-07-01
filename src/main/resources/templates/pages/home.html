@@ -1,14 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<title>Library System</title>
-		<meta charset="UTF-8">
-	</head>
+<head
+	th:replace="/fragments/head :: head(title='Library System', stylePath='/style/style_home.css', scriptPath='')">
+</head>
 
-	<body>
-	
-		<h1>Home page!</h1>
-	
-	</body>
+<body>
+	<main>
+
+		<div th:insert="/fragments/menu :: menu"></div>
+
+		<div class="container-xxl m-0">
+			<div class="row featurette mt-3">
+				<div class="col-md-7 px-5 py-5">
+					
+					<h2 class="featurette-heading mx-5 pt-5 my-5">
+						Pesquise. 
+						<span class="text-muted">Encontre algo para ler.</span>
+					</h2>
+					
+					<form action="" th:action="@{/book/search/}" class="px-5">
+						<div class="input-group input-group-lg border rounded-pill">
+							<input id="inputSearch" type="text" th:name="search"
+								class="form-control border-0 rounded-pill bg-white fs-5 me-1" aria-label="Sizing example input"
+								aria-describedby="inputGroup-sizing-lg">
+
+							<button type="submit"
+								class="text-decoration-none text-white input-group-text border-0 rounded-pill px-4"
+								id="btSearch">
+								<span class="" id="inputGroup-sizing-lg">Buscar</span>
+							</button>
+						</div>
+						
+						<p class="lead mt-4">Pesquise por livros, artigos, revistas etc. Para facilitar, use termos
+							relevantes, para que os resultados sejam mais precisos. 
+						</p>
+					</form>
+					
+				</div>
+				
+				<div class="col-md-5 mt-5 ">
+					<img src="" th:src="@{/assets/icons/icon-home.png}" alt="" class="img-fluid">
+				</div>
+				
+			</div>
+
+		</div>
+
+	</main>
+
+</body>
 </html>

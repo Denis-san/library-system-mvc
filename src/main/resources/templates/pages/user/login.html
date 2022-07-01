@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head
+	th:replace="/fragments/head :: head(title='Login - Library System', stylePath='/style/style_login.css', scriptPath='/script/script_login.js')">
+</head>
+
+<body>
+	<form th:object="${login}" th:action="@{/login/processLogin}" action="/login/processLogin" method="post">
+		
+		<input type="email" th:field="*{email}"> <br>
+		<input type="password" th:field="*{password}">
+		
+		<button type="submit">login</button>
+		
+	</form>
+</body>
+
+</html>

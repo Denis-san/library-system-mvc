@@ -2,18 +2,17 @@
 <html lang="pt-br">
 
 <head
-	th:replace="/fragments/head_fragment :: head(title='Editar autor - Library System', scriptPath='/script/script_admin_home.js', stylePath='/style/style_author_edit.css')">
+	th:replace="/fragments/admin/head_fragment :: head(title='Editar autor - Library System', scriptPath='/script/script_admin_home.js', stylePath='/style/style_author_edit.css')">
 </head>
 
 <body>
 
-	<div th:insert="/fragments/menu_admin :: menu"></div>
+	<div th:insert="/fragments/admin/menu_admin :: menu"></div>
 
 	<div class="container">
 
-		<div class="card border-0 p-5 card-info shadow">
 
-			<form action="/editAuthor" th:action="@{/author/editAuthor/edit}" th:object="${author}" method="post">
+			<form action="/editAuthor" th:action="@{/admin/author/processEdit}" th:object="${author}" method="post">
 
 				<h4>Editar autor:</h4>
 				<input type="hidden" th:field="*{id}">

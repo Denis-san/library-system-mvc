@@ -254,4 +254,65 @@ public class AdminController {
 		}
 	}
 
+	@GetMapping("/list/author")
+	public ModelAndView showListAuthor() {
+		ModelAndView mv = new ModelAndView("/pages/admin/author_templates/list_authors");
+
+		List<Author> listAuthor = new ArrayList<Author>();
+		mv.addObject("listAuthor", listAuthor);
+		return mv;
+	}
+
+	@RequestMapping("/list/author/search")
+	public ModelAndView searchAuthor(@RequestParam(name = "search") String search) {
+		ModelAndView mv = new ModelAndView("/pages/admin/author_templates/list_authors");
+
+		List<Author> result;
+
+		if (search.isBlank()) {
+			result = authorService.getAllAuthors();
+		} else {
+			result = authorService.searchAuthorByName(search);
+		}
+
+		mv.addObject("listAuthor", result);
+		mv.addObject("search", search);
+
+		return mv;
+	}
+
+	@GetMapping("/info/author/{id}")
+	public ModelAndView showAuthorDetails(@PathVariable(required = true, name = "id") Integer id) {
+		ModelAndView mv = new ModelAndView("/pages/admin/author_templates/author_details");
+
+		Author authorTemp = authorService.getAuthorById(id);
+
+		mv.addObject("author", authorTemp);
+
+		return mv;
+	}
+
+	@GetMapping("/edit/author")
+	public ModelAndView showAuthorEditForm(@RequestParam Integer id) {
+		ModelAndView mv = new ModelAndView("/pages/admin/author_templates/author_edit_form");
+
+		Author author = authorService.getAuthorById(id);
+		mv.addObject("author", author);
+
+		return mv;
+	}
+
+	@PostMapping("/edit/author/processEdit")
+	public String processAuthorEdit(@Valid Author author, BindingResult bdResult, RedirectAttributes attributes) {
+
+		if (bdResult.hasErrors()) {
+			return "/pages/admin/author_templates/author_edit_form";
+		} else {
+			authorService.updateAuthor(author);
+			attributes.addFlashAttribute("saved", true);
+		}
+
+		return "redirect:/admin/info/author" + author.getId();
+	}
+
 }

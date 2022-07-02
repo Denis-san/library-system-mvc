@@ -2,12 +2,12 @@
 <html lang="pt-br">
 
 <head
-	th:replace="/fragments/head_fragment :: head(title=${author.name} + ' - Library System', scriptPath='/script/script_admin_home.js', stylePath='/style/style_author_details.css')">
+	th:replace="/fragments/admin/head_fragment :: head(title=${author.name} + ' - Library System', scriptPath='/script/script_admin_home.js', stylePath='/style/style_author_details.css')">
 </head>
 
 <body>
 
-	<div th:insert="/fragments/menu_admin :: menu"></div>
+	<div th:insert="/fragments/admin/menu_admin :: menu"></div>
 
 	<div class="container">
 
@@ -40,7 +40,7 @@
 					<ul>
 						<li th:each="book : ${author.books}">
 							<a class="text-dark" th:text="${book.title}"
-								th:href="@{/book/info/{id}(id = ${book.id})}"></a>
+								th:href="@{/admin/info/book/{id}(id = ${book.id})}"></a>
 						</li>
 					</ul>
 
@@ -57,7 +57,7 @@
 				<p th:text="${author.biography}"></p>
 
 
-				<a class="btn btn-outline-secondary mt-3" th:href="@{/author/edit(id = ${author.id})}">
+				<a class="btn btn-outline-secondary mt-3" th:href="@{/admin/edit/author(id = ${author.id})}">
 					<i class="bi bi-pencil-square me-2"></i>Editar
 				</a>
 

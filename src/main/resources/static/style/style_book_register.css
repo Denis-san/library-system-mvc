@@ -18,6 +18,17 @@
   }
 
 
+  .wrapper {
+    overflow: auto;
+    height: 90vh;
+    width: 100%;
+  }
+
+  .content {
+    overflow-y: auto;
+  }
+
+
 .form-input input {
   display:none;
 }
@@ -36,3 +47,6 @@
   color: white;
 }
 
+#btn-edit-author{
+	background-image: url('/assets/icons/pencil-square.svg');
+}

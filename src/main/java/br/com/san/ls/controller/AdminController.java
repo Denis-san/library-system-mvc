@@ -29,7 +29,6 @@ import br.com.san.ls.service.LanguageService;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
 	@Autowired
 	private AuthorService authorService;
 
@@ -39,14 +38,18 @@ public class AdminController {
 	@Autowired
 	private BookService bookService;
 
-	@GetMapping("")
-	public String showAdminHome() {
-		return "/pages/admin/admin_home";
+	@RequestMapping("")
+	public ModelAndView showHomePage() {
+		ModelAndView mv = new ModelAndView("/pages/admin/admin_home");
+		Long quantityBookRegister = bookService.getQuantityOfBookRecords();
+		mv.addObject("quantityBookRegister", quantityBookRegister);
+
+		return mv;
 	}
 
-	@RequestMapping("/register")
+	@RequestMapping("/register/book")
 	public ModelAndView showRegisterForm() {
-		ModelAndView mv = new ModelAndView("/pages/admin/register_book.html");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/register_book.html");
 		List<Language> listAllLanguages = langService.getAllLanguages();
 
 		mv.addObject("book", new Book());
@@ -54,9 +57,9 @@ public class AdminController {
 		return mv;
 	}
 
-	@PostMapping(value = "/register", params = { "searchAuthor" })
+	@PostMapping(value = "/register/book", params = { "searchAuthor" })
 	public ModelAndView searchAuthorToAdd(final Book book, BindingResult bdResult, @RequestParam String search) {
-		ModelAndView mv = new ModelAndView("/pages/admin/register_book.html");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/register_book.html");
 
 		List<Author> resultAuthors = authorService.searchAuthorByName(search);
 
@@ -68,9 +71,9 @@ public class AdminController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/register", params = { "addAuthor" })
+	@RequestMapping(value = "/register/book", params = { "addAuthor" })
 	public ModelAndView addAuthor(final Book book, BindingResult bdResult, final HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("/pages/admin/register_book.html");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/register_book.html");
 
 		String authorId = request.getParameter("addAuthor");
 
@@ -92,9 +95,9 @@ public class AdminController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/register", params = { "removeAuthor" })
+	@RequestMapping(value = "/register/book", params = { "removeAuthor" })
 	public ModelAndView removeRow(final Book book, final BindingResult bindingResult, final HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView("/pages/admin/register_book.html");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/register_book.html");
 
 		final Integer rowId = Integer.valueOf(req.getParameter("removeAuthor"));
 		book.getAuthors().remove(rowId.intValue());
@@ -104,18 +107,18 @@ public class AdminController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/register", params = { "newLanguage" })
+	@RequestMapping(value = "/register/book", params = { "newLanguage" })
 	public ModelAndView newLanguage(Book book) {
-		ModelAndView mv = new ModelAndView("/pages/admin/register_book");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/register_book");
 
 		mv.addObject("newLang", true);
 
 		return mv;
 	}
 
-	@RequestMapping(value = "/register", params = { "cancelNewLanguage" })
+	@RequestMapping(value = "/register/book", params = { "cancelNewLanguage" })
 	public ModelAndView cancelNewLanguage(Book book) {
-		ModelAndView mv = new ModelAndView("/pages/admin/register_book");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/register_book");
 
 		mv.addObject("newLang", false);
 
@@ -125,17 +128,15 @@ public class AdminController {
 		return mv;
 	}
 
-	@PostMapping(value = "/register", params = { "send" })
+	@PostMapping(value = "/register/book", params = { "send" })
 	public ModelAndView processBookRegister(@Valid Book book, BindingResult bdResult, RedirectAttributes attributes) {
 
-		ModelAndView mv = new ModelAndView("redirect:/admin/register");
+		ModelAndView mv = new ModelAndView("redirect:/admin/register/book");
 
 		List<Language> listAllLanguages = langService.getAllLanguages();
 
 		if (book.getAuthors().isEmpty()) {
-			ObjectError authorListError = new ObjectError("errorListAuthor", "Não deve estar vazio!");
-			bdResult.addError(authorListError);
-			mv.addObject("listAuthorEmpty", authorListError);
+			bdResult.addError(new FieldError("errorListAuthor", "book.authors", "Não deve estar vazio!"));
 		} else {
 			for (Author author : book.getAuthors()) {
 				if (author.getId() != null) {
@@ -167,7 +168,7 @@ public class AdminController {
 			} else {
 				mv.addObject("allLanguages", listAllLanguages);
 			}
-			mv.setViewName("/pages/admin/register_book");
+			mv.setViewName("/pages/admin/book_templates/register_book");
 		} else {
 
 			Language lang = listAllLanguages.stream().filter(e -> e.equals(book.getLanguage())).findFirst()
@@ -183,9 +184,9 @@ public class AdminController {
 
 	}
 
-	@GetMapping("/listBooks")
+	@GetMapping("/list/book")
 	public ModelAndView showListBook() {
-		ModelAndView mv = new ModelAndView("/pages/admin/list_books");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/list_books");
 
 		List<Book> books = new ArrayList<Book>();
 
@@ -193,9 +194,9 @@ public class AdminController {
 		return mv;
 	}
 
-	@RequestMapping("/listBooks/search")
+	@RequestMapping("/list/book/search")
 	public ModelAndView searchBook(@RequestParam(name = "search") String search) {
-		ModelAndView mv = new ModelAndView("/pages/admin/list_books");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/list_books");
 
 		List<Book> results;
 
@@ -210,9 +211,9 @@ public class AdminController {
 		return mv;
 	}
 
-	@GetMapping("/info/{id}")
+	@GetMapping("/info/book/{id}")
 	public ModelAndView showBookDetails(@PathVariable(required = true, name = "id") Integer id) {
-		ModelAndView mv = new ModelAndView("/pages/admin/book_details");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/book_details");
 
 		Book bookTemp = bookService.getBookById(id);
 
@@ -221,9 +222,9 @@ public class AdminController {
 		return mv;
 	}
 
-	@GetMapping("/edit/{id}")
+	@GetMapping("/edit/book/{id}")
 	public ModelAndView showEditForm(@PathVariable(required = true, name = "id") Integer id) {
-		ModelAndView mv = new ModelAndView("/pages/admin/edit_book_form");
+		ModelAndView mv = new ModelAndView("/pages/admin/book_templates/edit_book_form");
 
 		if (id != null) {
 			Book book = bookService.getBookById(id);
@@ -233,7 +234,7 @@ public class AdminController {
 		return mv;
 	}
 
-	@GetMapping("/delete/{id}")
+	@GetMapping("/delete/book/{id}")
 	public String showDeleteRegister(@PathVariable(required = true, name = "id") Integer id,
 			RedirectAttributes attribute) {
 
@@ -241,7 +242,7 @@ public class AdminController {
 			bookService.deleteBookById(id);
 			attribute.addFlashAttribute("deleted", true);
 		}
-		return "redirect:/admin/listBooks";
+		return "redirect:/admin/list/book";
 	}
 
 	private void addFillForLanguageField(Book book, ModelAndView mv) {

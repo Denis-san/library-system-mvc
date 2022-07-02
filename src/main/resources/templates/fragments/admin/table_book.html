@@ -1,7 +1,7 @@
 <div th:fragment="tableBook" class="container-xxl px-5 mt-4">
 	<div>
 		<div class="container mb-4">
-			<form action="/book" th:action="@{/book/listBooks/search}">
+			<form action="/book" th:action="@{/admin/list/book/search}">
 				<div class="input-group input-group border rounded-pill">
 					<input id="inputSearch" type="text" class="form-control border-0 rounded-pill"
 						aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" th:value="${search}"
@@ -50,24 +50,24 @@
 								<td>
 									<div th:each="author : ${book.authors}" class="text-truncate">
 										<a href="" th:text="${author.name}"
-											th:href="@{/author/info/{id}(id = ${author.id})}">authors</a>
+											th:href="@{/admin/info/author/{id}(id = ${author.id})}">authors</a>
 									</div>
 								</td>
 								<td th:text="${book.publishCompany}">Publish Company</td>
 								<td class="text-center">
-									<a class="btn btn-outline-secondary" href="/book/listBooks/book/"
-										th:href="@{'/book/info/' + ${book.id}}">
+									<a class="btn btn-outline-secondary" href="/admin/list/book/"
+										th:href="@{'/admin/info/book/' + ${book.id}}">
 										<i class="bi bi-info-circle"></i>
 									</a>
 
 									<a class="btn btn-outline-primary" href="/book/listBooks/book/"
-										th:href="@{'/book/edit/' + ${book.id}}">
+										th:href="@{'/admin/edit/book/' + ${book.id}}">
 										<i class="bi bi-pencil-square"></i>
 									</a>
 
 									<a class="btn btn-outline-danger" href="/book/listBooks/book/"
 										onclick="return confirm('Deseja realmente DELETAR livro?')"
-										th:href="@{'/book/delete/' + ${book.id}}">
+										th:href="@{'/admin/delete/book/' + ${book.id}}">
 										<i class="bi bi-trash"></i>
 									</a>
 
@@ -80,19 +80,6 @@
 
 			</div>
 
-			<nav aria-label="Page navigation example" id="nav-page">
-				<ul class="pagination justify-content-center">
-					<li class="page-item disabled">
-						<a class="page-link">Previous</a>
-					</li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item">
-						<a class="page-link" href="#">Next</a>
-					</li>
-				</ul>
-			</nav>
 		</div>
 
 	</div>

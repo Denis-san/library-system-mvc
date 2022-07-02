@@ -1,7 +1,7 @@
 <div th:fragment="formBook (formAction)" class="container-xxl px-5 mt-4">
 
 	<div class="alert text-white bg-danger alert-dismissible fade show border-0 rounded-0 shadow" role="alert"
-		th:if="${listAuthorEmpty}">
+		th:if="${#fields.hasErrors('${book.authors}')}">
 		<i class="bi bi-exclamation-diamond-fill me-2"></i><strong>Oops! </strong>Por favor, insira
 		autores para esse livro!
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -19,7 +19,7 @@
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 
-	<form action="" method="post" th:action="@{/admin/register}" th:object="${book}" onsubmit="return submitForm(this)"
+	<form action="" method="post" th:action="@{/admin/register/book}" th:object="${book}" onsubmit="return submitForm(this)"
 		enctype="multipart/form-data">
 		<div class="row align-items-md-stretch g-5">
 
@@ -299,8 +299,9 @@
 			</div>
 		</div>
 
+
 		<div id="modalSearchAuthor" th:if="${searchAuthorObj}">
-			<div th:insert="/fragments/admin_html_fragments/table_search_author_modal :: searchAuthorModal">
+			<div th:insert="/fragments/admin/table_search_author_modal :: searchAuthorModal">
 			</div>
 		</div>
 

@@ -2,13 +2,13 @@
 <html lang="pt-br">
 
 <head
-	th:replace="/fragments/head :: head(title='Listar cadastros de livros - Library System', scriptPath='/script/script_admin_home.js', stylePath='/style/style_list_books.css')">
+	th:replace="/fragments/admin/head_fragment :: head(title='Listar cadastros de livros - Library System', scriptPath='/script/script_admin_home.js', stylePath='/style/style_list_books.css')">
 </head>
 
 <body>
 
 
-	<div th:insert="/fragments/admin_html_fragments/menu_admin.html :: menu"></div>
+	<div th:insert="/fragments/admin/menu_admin :: menu"></div>
 
 	<div class="container">
 		<div class="alert text-white bg-warning alert-dismissible fade show border-0 rounded-0 shadow" role="alert"
@@ -20,7 +20,7 @@
 
 	</div>
 
-	<div th:insert="/fragments/admin_html_fragments/table_book.html :: tableBook"></div>
+	<div th:insert="/fragments/admin/table_book :: tableBook"></div>
 
 </body>
 

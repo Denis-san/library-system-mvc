@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:replace="/fragments/admin/head_fragment.html :: head(title='Editar um livro', scriptPath='/script/script_book_register.js', stylePath='/style/style_book_register.css')">
+</head>
+
+<body class="bg-light">
+
+	<div th:insert="/fragments/admin/menu_admin :: menu"></div>
+
+	<div th:insert="/fragments/admin/form_book :: formBook ('/book/editBook/processEdit')"></div>
+
+</body>
+
+</html>

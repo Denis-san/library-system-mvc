@@ -1,104 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
-
-<head
-	th:replace="/fragments/head :: head(title='Admin - Library System', stylePath='/style/style_admin_home.css', scriptPath='')">
+<head th:replace="/fragments/admin/head_fragment.html :: head(title='Bem vindo Admin!', scriptPath='/script/script_admin_home.js', stylePath='/style/style_admin_home.css')">
 </head>
 
 <body class="bg-light">
-	<div th:insert="/fragments/admin_html_fragments/menu_admin :: menu"></div>
 
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-sm-6">
-				<div class="p-3 bg-white h-100 card-info shadow">
-					<div class="text-center">
-						<h4>Olá Admin!</h4>
-					</div>
-					<div class="row mt-4">
-						<div class="col-sm-6">
-							<a th:href="@{/admin/listBooks}" href="/listBooks" class="btn btn-outline-secondary w-100 h-100">
-								<i class="bi bi-list-ul fs-5 me-3"></i>
-								Listar todos os livros</a>
-						</div>
+<div th:insert="/fragments/admin/menu_admin :: menu"></div>
 
-						<div class="col-sm-6">
-							<a th:href="@{/admin/configSystem}" href="/configSystem" class="btn btn-outline-secondary w-100 h-100">
-								<i class="bi bi-gear fs-5 me-3"></i>
-								Acessar configurações do sistema</a>
-						</div>
-					</div>
 
-				</div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="p-3 bg-white h-100 card-info shadow">
+                    <div class="text-center">
+                        <h4>Olá Admin!</h4>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-6">
+                            <button class="btn btn-outline-secondary w-100 h-100">
+                                <i class="bi bi-list-ul fs-5 me-3"></i>
+                                Listar todos os livros</button>
+                        </div>
 
-			</div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-outline-secondary w-100 h-100">
+                                <i class="bi bi-gear fs-5 me-3"></i>
+                                Acessar configurações do sistema</button>
+                        </div>
+                    </div>
 
-			<div class="col-sm-3">
-				<div class="p-3 bg-white h-100 card-info shadow">
-					<div class="text-center pt-3">
-						<h4><i class="bi bi-box me-2"></i>Estoque atual:</h4>
-						<h1 class="mt-4 fw-bold">75</h1>
-					</div>
+                </div>
 
-				</div>
+            </div>
 
-			</div>
+            <div class="col-sm-3">
+                <div class="p-3 bg-white h-100 card-info shadow">
+                    <div class="text-center pt-3">
+                        <h4><i class="bi bi-box me-2"></i>Estoque atual:</h4>
+                        <h1 class="mt-4 fw-bold" th:text="${quantityBookRegister}">75</h1>
+                    </div>
 
-			<div class="col-sm-3">
-				<div class="p-3 bg-white h-100 card-info shadow">
-					<div class="text-center pt-3">
-						<h4><i class="bi bi-bookmarks me-2"></i>Em empréstimo:</h4>
-						<h1 class="mt-4 fw-bold">12</h1>
-					</div>
+                </div>
 
-				</div>
-			</div>
+            </div>
 
-		</div>
+            <div class="col-sm-3">
+                <div class="p-3 bg-white h-100 card-info shadow">
+                    <div class="text-center pt-3">
+                        <h4><i class="bi bi-bookmarks me-2"></i>Em empréstimo:</h4>
+                        <h1 class="mt-4 fw-bold">12</h1>
+                    </div>
 
-		<div class="row mt-4">
-			<div class="col-sm-4">
-				<a href="/admin/registerBook" th:href="@{/admin/register}" class="text-reset text-decoration-none">
-					<div class="pt-2 h-100 shadow info-card" id="card1">
-						<div class=" pt-3 ps-3 pe-3">
-							<h4><i class="bi bi-gear me-2"></i></h4>
-							<h4>Registrar novos livros</h4>
-							<h1 class=" text-end fw-bold"><i class="bi bi-plus-circle-fill icon-back"></i></h1>
-						</div>
+                </div>
+            </div>
 
-					</div>
-				</a>
-			</div>
+        </div>
 
-			<div class="col-sm-4">
-				<a href="/admin/editBook" th:href="@{/admin/editBook}" class="text-reset text-decoration-none">
-					<div class="pt-2 h-100 shadow info-card" id="card2">
-						<div class=" pt-3 ps-3 pe-3">
-							<h4><i class="bi bi-gear me-2"></i></h4>
-							<h4>Editar livros</h4>
-							<h1 class=" text-end fw-bold"><i class="bi bi-pencil-square icon-back"></i></h1>
-						</div>
+        <div class="row mt-4">
+            <div class="col-sm-4">
+                <a href="/" th:href="@{/admin/register/book}" class="text-reset text-decoration-none">
+                    <div class="pt-2 h-100 shadow info-card" id="card1">
+                        <div class=" pt-3 ps-3 pe-3">
+                            <h4><i class="bi bi-gear me-2"></i></h4>
+                            <h4>Registrar novos livros</h4>
+                            <h1 class=" text-end fw-bold"><i class="bi bi-plus-circle-fill icon-back"></i></h1>
+                        </div>
 
-					</div>
-				</a>
-			</div>
+                    </div>
+                </a>
+            </div>
 
-			<div class="col-sm-4">
-				<a href="/admin/deleteBook" th:href="@{/admin/deleteBook}" class="text-reset text-decoration-none">
-					<div class="pt-2 h-100 shadow info-card" id="card3">
-						<div class=" pt-3 ps-3 pe-3">
-							<h4><i class="bi bi-gear me-2"></i></h4>
-							<h4>Remover Livros</h4>
-							<h1 class=" text-end fw-bold"><i class="bi bi-trash icon-back"></i></h1>
-						</div>
+            <div class="col-sm-4">
+                <a href="" th:href="@{/admin/list/book}" class="text-reset text-decoration-none">
+                    <div class="pt-2 h-100 shadow info-card" id="card2">
+                        <div class=" pt-3 ps-3 pe-3">
+                            <h4><i class="bi bi-gear me-2"></i></h4>
+                            <h4>Editar livros</h4>
+                            <h1 class=" text-end fw-bold"><i class="bi bi-pencil-square icon-back"></i></h1>
+                        </div>
 
-					</div>
-				</a>
-			</div>
+                    </div>
+                </a>
+            </div>
 
-		</div>
-	</div>
+            <div class="col-sm-4">
+                <a href="" th:href="@{/admin/list/book}" class="text-reset text-decoration-none">
+                    <div class="pt-2 h-100 shadow info-card" id="card3">
+                        <div class=" pt-3 ps-3 pe-3">
+                            <h4><i class="bi bi-gear me-2"></i></h4>
+                            <h4>Remover Livros</h4>
+                            <h1 class=" text-end fw-bold"><i class="bi bi-trash icon-back"></i></h1>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>

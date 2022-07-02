@@ -12,7 +12,7 @@
 	<div class="container">
 
 
-			<form action="/editAuthor" th:action="@{/admin/author/processEdit}" th:object="${author}" method="post">
+			<form action="/editAuthor" th:action="@{/admin/edit/author/processEdit}" th:object="${author}" method="post">
 
 				<h4>Editar autor:</h4>
 				<input type="hidden" th:field="*{id}">

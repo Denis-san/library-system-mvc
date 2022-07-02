@@ -312,7 +312,7 @@ public class AdminController {
 			attributes.addFlashAttribute("saved", true);
 		}
 
-		return "redirect:/admin/info/author" + author.getId();
+		return "redirect:/admin/info/author/" + author.getId();
 	}
 
 }

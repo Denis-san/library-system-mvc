@@ -10,18 +10,16 @@ function showPreview(event) {
 	fileChoosed = true;
 }
 
-var btnRemoveAuthorIsClicked = false;
+var btnSendIsClicked = false;
 
-function btnRemoveAuthorCliked() {
-	btnRemoveAuthorIsClicked = true;
+function btnSendCliked() {
+	btnSendIsClicked = true;
 }
 
 function submitForm() {
-	if (!btnRemoveAuthorIsClicked) {
-		if (document.getElementById("divAuthors") !== null) {
-			if (fileChoosed === false) {
-				return confirm('Parece que você esqueceu de selecionar uma capa para este livro. \n\nDESEJA REALMENTE SALVÁ-LO SEM UMA IMAGEM DE CAPA?');
-			}
+	if (btnSendIsClicked) {
+		if (fileChoosed === false) {
+			return confirm('Parece que você esqueceu de selecionar uma capa para este livro. \n\nDESEJA REALMENTE SALVÁ-LO SEM UMA IMAGEM DE CAPA?');
 		}
 	}
 }

@@ -180,13 +180,13 @@
 												aria-label="Disabled input example" readonly
 												th:field="*{authors[__${rowStat.index}__].name}">
 
-											<a th:href="@{/author/edit(id=*{authors[__${rowStat.index}__].id})}"
+											<a th:href="@{/admin/edit/author(id=*{authors[__${rowStat.index}__].id})}"
 												class="btn-close me-5 bg-white rounded-circle p-2 m-1"
-												id="btn-edit-author">
+												id="btn-edit-author" onclick="return confirm('Você será redirecionado para editar este autor, \nmas perderá os dados em edição no momento. Confirma?')">
 											</a>
 
 											<button type="submit" name="removeAuthor" th:value="${rowStat.index}"
-												class="btn-close bg-white rounded-circle p-2 m-1"></button>
+												class="btn-close bg-white rounded-circle p-2 m-1" onclick="return confirm('Deseja realmente Remover este autor?')"></button>
 										</div>
 									</div>
 
@@ -222,7 +222,7 @@
 									<div class="col-12 pb-4 mt-3" th:if="*{authors[__${rowStat.index}__].id} == null">
 										<div class="d-grid gap-2 col-5 mx-auto">
 											<button type="submit" name="removeAuthor" th:value="${rowStat.index}"
-												class="btn btn-danger" onclick="btnRemoveAuthorCliked()">
+												class="btn btn-danger">
 												<i class="bi bi-trash me-2"></i>
 												Remover autor</button>
 										</div>
@@ -264,7 +264,7 @@
 
 		<div class="col-12 pb-4">
 			<div class="d-grid gap-2 col-6 mx-auto">
-				<button class="btn btn-primary mt-4 fw-bolder" type="submit" name="send">
+				<button class="btn btn-primary mt-4 fw-bolder" type="submit" name="send" onclick="btnSendCliked()">
 					<i class="bi bi-save me-2"></i>
 					Salvar!</button>
 			</div>

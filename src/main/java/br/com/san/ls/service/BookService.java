@@ -9,5 +9,13 @@ public interface BookService {
 	public List<Book> search(String search);
 
 	public List<Book> getAllBooks();
-	
+
+	public void saveNewBook(Book book);
+
+	public Book getBookById(Integer id);
+
+	public void deleteBookById(Integer id);
+
+	public Long getQuantityOfBookRecords();
+
 }

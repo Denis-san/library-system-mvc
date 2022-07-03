@@ -29,6 +29,8 @@ public class BookController {
 		} else {
 			results = bookService.search(search);
 		}
+		
+		results.stream().forEach(e-> System.out.println(e.getPathCloak()));
 
 		mv.addObject("listBook", results);
 		mv.addObject("search", search);

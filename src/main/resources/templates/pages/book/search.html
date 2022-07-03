@@ -72,7 +72,7 @@
 					<div class="mt-5">
 						<span class="fw-bold"
 							th:classappend="(${book.inventoryQuantity} > 0)? text-success : text-danger">
-							<i class="bi bi-check-circle-fill"></i>
+							<i th:classappend="(${book.inventoryQuantity} > 0)? 'bi bi-check-circle-fill' : 'bi bi-x-circle-fill'"></i>
 							<span
 								th:text="(${book.inventoryQuantity} > 0)? 'Disponível' : 'Indísponível'">Disponível</span>
 						</span>

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,10 +16,10 @@ import br.com.san.ls.service.BookService;
 @Controller
 @RequestMapping("/book")
 public class BookController {
-	
+
 	@Autowired
 	private BookService bookService;
-	
+
 	@RequestMapping("/search")
 	public ModelAndView searchBook(@RequestParam(name = "search") String search) {
 		ModelAndView mv = new ModelAndView("/pages/book/search");
@@ -29,11 +31,20 @@ public class BookController {
 		} else {
 			results = bookService.search(search);
 		}
-		
-		results.stream().forEach(e-> System.out.println(e.getPathCloak()));
 
 		mv.addObject("listBook", results);
 		mv.addObject("search", search);
+		return mv;
+	}
+
+	@GetMapping("/details/{id}")
+	public ModelAndView bookDetails(@PathVariable(required = true, name = "id") Integer id) {
+		ModelAndView mv = new ModelAndView("/pages/book/bookDetails");
+
+		Book book = bookService.getBookById(id);
+
+		mv.addObject("book", book);
+
 		return mv;
 	}
 

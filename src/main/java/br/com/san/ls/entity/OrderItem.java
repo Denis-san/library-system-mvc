@@ -32,6 +32,10 @@ public class OrderItem implements Serializable{
 		this.book = book;
 	}
 
+	public OrderItem(Book book) {
+		this.book = book;
+	}
+
 	public Integer getId() {
 		return id;
 	}

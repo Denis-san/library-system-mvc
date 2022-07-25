@@ -14,7 +14,8 @@
 		<div class="card border-0 shadow mb-3 card-info">
 			<div class="row g-0">
 				<div class="col-md-4 p-5">
-					<img th:src="(${book.pathCloak})? ${book.pathCloak} : '/assets/book-templates/template_upload_cloak.png'" class="img-fluid rounded-start" alt="...">
+					<img th:src="(${book.pathCloak})? ${book.pathCloak} : '/assets/book-templates/template_upload_cloak.png'"
+						class="img-fluid rounded-start" alt="...">
 				</div>
 				<div class="col-md-8 mt-5">
 					<div class="card-body">
@@ -49,18 +50,24 @@
 							<div class="row">
 								<div class="col-md-6">
 									<p th:classappend="(${book.inventoryQuantity} > 0)? text-success : text-danger">
-										<i th:classappend="(${book.inventoryQuantity} > 0)? 'bi bi-check-circle' : 'bi bi-x-circle-fill'">
-										</i><span th:text="(${book.inventoryQuantity} > 0)? 'Disponível' : 'Indísponível'"></span>
+										<i
+											th:classappend="(${book.inventoryQuantity} > 0)? 'bi bi-check-circle' : 'bi bi-x-circle-fill'">
+										</i><span
+											th:text="(${book.inventoryQuantity} > 0)? 'Disponível' : 'Indísponível'"></span>
 										para empréstimo
 									</p>
 								</div>
 								<div class="col-md-6">
 
-									<div class="d-grid gap-2 px-3">
-										<button class="rounded bt-loan border-0 py-2 fs-5 fw-bold" 
-										th:classappend="(${book.inventoryQuantity} <= 0)? 'cursor-block'"
-											th:disabled="${book.inventoryQuantity} <= 0" type="button">Pegar
-											emprestado</button>
+									<div class="d-grid gap-2 px-3 text-center">
+										
+										<a class="rounded bt-loan border-0 py-2 fs-5 fw-bold text-decoration-none"
+											th:classappend="(${book.inventoryQuantity} <= 0)? 'cursor-block'"
+											th:disabled="${book.inventoryQuantity} <= 0" 
+											th:href="@{'/order/cart/lend/'+${book.id}}">
+											<i class="bi bi-hand"></i>
+											Pegar emprestado
+										</a>
 									</div>
 
 								</div>
@@ -86,7 +93,8 @@
 						aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
 						<div class="accordion-body bg-transparent px-4">
 							<h5>Descrição:</h5>
-							<p th:text="${book.description}">This is a wider card with supporting text below as a natural lead-in to additional
+							<p th:text="${book.description}">This is a wider card with supporting text below as a
+								natural lead-in to additional
 								content. This content is a little bit longer.</p>
 						</div>
 					</div>

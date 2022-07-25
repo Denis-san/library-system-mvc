@@ -71,5 +71,8 @@
   }
   
   .cursor-block{
+	pointer-events: none;
 	cursor: not-allowed;
+	background-color:#a60505;
+	opacity: 0.5;
 }

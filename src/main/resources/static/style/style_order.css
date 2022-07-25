@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+ 
+  body {
+    font-family: 'Quicksand', Helvetica, sans-serif;
+    margin: 0;
+    position: relative; 
+  }
+
+  .side-img img{
+      max-height: 200px;
+  }
+
+  .side-right-img {
+    max-height: 120px;
+  }
+
+  .bt-loan{
+    background-color: #4297a0;
+    color: white;
+}
+
+.bt-loan:hover {
+  color: white;
+}
+
+.title-order{
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.card-info{
+  border-radius: 1rem;
+}
+
+.btn-add{
+  color: #6c757d;
+  transition: 0.5s;
+}
+
+.btn-add a {
+  color: #6c757d;
+}
+
+.btn-add:hover a{
+  color: white;
+}
+
+.btn-add:hover{
+  background-color: #4297a0;
+  color: white;
+  border: none;
+}
+
+

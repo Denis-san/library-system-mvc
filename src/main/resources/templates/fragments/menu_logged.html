@@ -1,123 +1,100 @@
 <div th:fragment="menuLogged">
-        <nav class="navbar navbar-expand-lg navbar-light border-bottom shadow" id="menu">
-            <div class="container-fluid">
-                <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+	<nav class="navbar navbar-expand-lg navbar-light border-bottom shadow" id="menu">
+		<div class="container-fluid">
+			<button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active ms-5" aria-current="page" href="/" th:href="@{/}"><img
-                                    src="/assets/icons/logo-100-white.png" alt=""></a>
-                        </li>
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active ms-5" aria-current="page" href="/" th:href="@{/}"><img
+								src="/assets/icons/logo-100-white.png" alt=""></a>
+					</li>
 
-                    </ul>
+				</ul>
 
-                    <div class="w-100 px-5">
-                        <form action="/book/search">
-                            <div class="row">
-                                <div class="col-sm-1"></div>
-                                <div class="col-sm-7 pe-0">
-                                    <input type="text" placeholder="Buscar um livro"
-                                        class="form-control bg-search-input border-0 ps-4 text-white rounded-pill">
-                                </div>
-                                <div class="col-sm-2 ps-0">
-                                    <button class="btn rounded-pill text-secondary">
-                                        <i class="bi bi-search me-2"></i>
-                                    </button>
-                                </div>
-                                <div class="col-sm-2 text-end">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0" id="dropdownMenuButton1"
-                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="bi bi-basket2-fill fs-4 text-muted"></i>
-                                        </button>
-                                        <ul class="dropdown-menu border-0 shadow" style="width: 250px;" aria-labelledby="dropdownMenuButton1">
-                                            <li>
-                                                <div class="dropdown-item">
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <img src="../assets/book-template/sherlock.png" alt=""
-                                                                width="40">
-                                                        </div>
-                                                        <div class="col-sm-9 p-2">
-                                                            <h6>Sherlock Holmes</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="dropdown-item">
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <img src="../assets/book-template/sherlock-4.png" alt=""
-                                                                width="40">
-                                                        </div>
-                                                        <div class="col-sm-9 p-2">
-                                                            <h6>Livro 2</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="dropdown-item">
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <img src="../assets/book-template/sherlock-2.png" alt=""
-                                                                width="40">
-                                                        </div>
-                                                        <div class="col-sm-9 p-2">
-                                                            <h6> Holmes</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="dropdown-item text-center" id="item-button-finish">
-                                                <button class="btn " id="btn-finish">Ver carrinho</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+				<div class="w-100 px-5">
+					<form action="/book/search" th:action="@{/book/search}">
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-7 pe-0">
+								<input type="text" placeholder="Buscar um livro" name="search"
+									class="form-control bg-search-input border-0 ps-4 text-white rounded-pill">
+							</div>
+							<div class="col-sm-2 ps-0">
+								<button class="btn rounded-pill text-secondary">
+									<i class="bi bi-search me-2"></i>
+								</button>
+							</div>
+							<div class="col-sm-2 text-end">
+								<div class="dropdown">
+									<button type="button" class="btn p-0" id="dropdownMenuButton1"
+										data-bs-toggle="dropdown" aria-expanded="false"><i
+											class="bi bi-basket2-fill fs-4 text-muted"></i>
+									</button>
+									<ul class="dropdown-menu border-0 shadow" style="width: 250px;"
+										aria-labelledby="dropdownMenuButton1" >
+										<li th:each="item : ${session.cart.items}">
+											<div class="dropdown-item">
+												<div class="row">
+													<div class="col-sm-3">
+														<img src="/assets/book-templates/template_upload_cloak.png" alt=""
+															width="40">
+													</div>
+													<div class="col-sm-9 p-2">
+														<h6 th:text="${item.book.title}">Title</h6>
+													</div>
+												</div>
+											</div>
+										</li>
+										
+										
+										<li class="dropdown-item text-center" id="item-button-finish">
+											<a class="btn " id="btn-finish" th:href="@{/order/review}"><u>Ver carrinho</u></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
 
-                    <div class="d-flex">
-                        <ul class="navbar-nav mb-2 me-4 mb-lg-0" id="navLinks">
-                            <li class="nav-item">
-                                <div class="btn-group">
-                                    <a type="button" class="btn  dropdown-toggle " data-bs-toggle="dropdown"
-                                        data-bs-display="static" aria-expanded="false">
-                                        <img src="/assets/icons/perfil.png"
-                                            class="rounded-circle" width="40" height="40" alt="">
-                                        Usuario
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-lg-end drop-login border-0 shadow">
-                                        <li>
-                                            <button class="dropdown-item" type="button">
-                                                <i class="bi bi-person-circle me-2"></i>Conta 
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item" type="button">
-                                                <i class="bi bi-envelope me-2"></i>Mensagens
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item" type="button">
-                                                <i class="bi bi-box-arrow-left me-2"></i>Sair
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
+				<div class="d-flex">
+					<ul class="navbar-nav mb-2 me-4 mb-lg-0" id="navLinks">
+						<li class="nav-item">
+							<div class="btn-group">
+								<a type="button" class="btn  dropdown-toggle " data-bs-toggle="dropdown"
+									data-bs-display="static" aria-expanded="false">
+									<img src="/assets/icons/perfil.png" class="rounded-circle" width="40" height="40"
+										alt="">
+									Usuario
+								</a>
+								<ul class="dropdown-menu dropdown-menu-lg-end drop-login border-0 shadow">
+									<li>
+										<button class="dropdown-item" type="button">
+											<i class="bi bi-person-circle me-2"></i>Conta
+										</button>
+									</li>
+									<li>
+										<button class="dropdown-item" type="button">
+											<i class="bi bi-envelope me-2"></i>Mensagens
+										</button>
+									</li>
+									<li>
+										<button class="dropdown-item" type="button">
+											<i class="bi bi-box-arrow-left me-2"></i>Sair
+										</button>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+</div>

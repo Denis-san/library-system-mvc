@@ -18,6 +18,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table(name = "book_tb")
 public class Book implements Serializable {
@@ -57,6 +60,7 @@ public class Book implements Serializable {
 	private String shelfCode;
 
 	@ManyToMany(cascade = { CascadeType.MERGE }, fetch = FetchType.LAZY)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "author_id") })
 	private List<Author> authors = new ArrayList<Author>();

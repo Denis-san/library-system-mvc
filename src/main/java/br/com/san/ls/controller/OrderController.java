@@ -1,12 +1,12 @@
 package br.com.san.ls.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,8 +21,23 @@ public class OrderController {
 	@Autowired
 	private BookService bookService;
 
+	@GetMapping("/review")
+	public String orderIndex(HttpSession session) {
+
+		if (session.getAttribute("cart") == null) {
+			return "redirect:/";
+		} else {
+			Order cart = (Order) session.getAttribute("cart");
+			if (cart.getItems().isEmpty()) {
+				return "redirect:/";
+			}
+		}
+
+		return "pages/order/order_details";
+	}
+
 	@RequestMapping("/cart/lend/{id}")
-	public String orderDetails(@PathVariable(required = true, name = "id") Integer id, HttpSession session) {
+	public String orderDetails(@PathVariable(required = false, name = "id") Integer id, HttpSession session) {
 
 		OrderItem item = new OrderItem(bookService.getBookById(id));
 
@@ -38,12 +53,26 @@ public class OrderController {
 			session.setAttribute("cart", cart);
 		}
 
-		return "pages/order/order_details";
+		return "redirect:/order/review";
+	}
+
+	@RequestMapping("/cart/remove/{id}")
+	public String removeOrderItem(@PathVariable(required = true, name = "id") Integer id, HttpSession session) {
+
+		Order cart = (Order) session.getAttribute("cart");
+		OrderItem item = cart.getItems().stream().filter(e -> e.getBook().getId() == id).findAny().orElse(null);
+
+		cart.getItems().remove(item);
+
+		session.setAttribute("cart", cart);
+		return "redirect:/order/review";
 	}
 
 	private boolean itemExists(Order order, Integer id) {
 		for (OrderItem item : order.getItems()) {
-			return (item.getId() == id);
+			if (item.getBook().getId() == id) {
+				return true;
+			}
 		}
 
 		return false;

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+body{
+	font-family: 'Ubuntu';
+}
+
+.div-center {
+    width: 100%;
+    max-width: 580px;
+    margin: auto;
+    border-radius: 0.8rem;
+}
+
+table thead, tbody, td, th{
+    border: none;
+}
+
+.btn-primary{
+    background: #e57f84;
+    border-color: #e57f84;
+}
+
+.btn-primary:hover{
+    background-color: #e06f75;
+    border-color: #e06f75;
+}

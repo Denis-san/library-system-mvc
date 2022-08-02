@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.com.san.ls.entity.enums.OrderStatus;
+
 @Entity
 @Table(name = "order_tb")
 public class Order implements Serializable{
@@ -40,15 +42,21 @@ public class Order implements Serializable{
 	private User client;
 	
 	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "order_id")
 	private List<OrderItem> items = new ArrayList<OrderItem>();
+	
+	@Column(name = "status")
+	private OrderStatus status;
 
 	public Order() {
-
+		this.orderReturn = orderMoment.plusDays(DAYS_TO_RETURN_ORDER);
 	}
 
-	public Order(Integer id, User client) {
+	public Order(Integer id, User client, OrderStatus orderStatus) {
 		this.id = id;
 		this.setClient(client);
+		this.status = orderStatus;
+		this.orderReturn = orderMoment.plusDays(DAYS_TO_RETURN_ORDER);
 	}
 
 	public void setId(Integer id) {
@@ -64,7 +72,7 @@ public class Order implements Serializable{
 	}
 
 	public LocalDate getOrderReturn() {
-		return this.orderMoment.plusDays(DAYS_TO_RETURN_ORDER);
+		return orderReturn;
 	}
 
 	public User getClient() {
@@ -73,6 +81,14 @@ public class Order implements Serializable{
 
 	public void setClient(User client) {
 		this.client = client;
+	}
+	
+	public OrderStatus getOrderStatus() {
+		return status;
+	}
+	
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.status = orderStatus;
 	}
 
 	public List<OrderItem> getItems() {

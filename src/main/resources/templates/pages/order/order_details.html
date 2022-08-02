@@ -33,20 +33,24 @@
 									<h5 class="card-title fs-4 fw-bolder" th:text="${item.book.title}">Title</h5>
 
 									<div class="fw-bold">
-										<p>Código do pedido: <span class="fw-normal">#87423432</span></p>
-										<p>Data do pedido: <span class="fw-normal">04/02/2022</span></p>
+										<p>Código do pedido: <span class="fw-normal"></span></p>
+										<p>Data do pedido: <span class="fw-normal"
+												 th:text="${#temporals.format(session.cart.orderMoment, 'dd/MM/yyyy')}">04/02/2022</span></p>
 									</div>
 
 
 									<div class="container-fluid">
 										<div class="row">
 											<div class="col-md-6 fw-bold text-success">
-												<p>Devolução: <span class="fw-normal">07/02/2022</span></p>
+												<p>Devolução: <span class="fw-normal"
+														th:text="${#temporals.format(session.cart.orderReturn, 'dd/MM/yyyy')}">07/02/2022</span>
+												</p>
 											</div>
 											<div class="col-md-6">
 
 												<div class="d-grid gap-2 px-3">
-													<a class="btn btn-outline-danger" th:href="'/order/cart/remove/'+${item.book.id}">
+													<a class="btn btn-outline-danger"
+														th:href="'/order/cart/remove/'+${item.book.id}">
 														<i class="bi bi-trash"></i>
 														Remover
 													</a>
@@ -150,7 +154,7 @@
 
 					<li class="list-group-item border-0 mt-3">
 						<div class="d-grid gap-2">
-							<button class="btn bt-loan btn-lg" type="button">Finalizar Pedido</button>
+							<a class="btn bt-loan btn-lg" th:href="@{/order/processOrder}">Finalizar Pedido</a>
 							<button class="btn btn-outline-danger btn-lg" data-bs-toggle="modal"
 								data-bs-target="#staticBackdrop" type="button">Cancelar</button>
 						</div>
@@ -158,9 +162,6 @@
 					</li>
 
 				</ul>
-
-
-
 			</div>
 		</div>
 	</div>
@@ -179,7 +180,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Desistir</button>
-					<button type="button" class="btn btn-outline-danger">Confirmar</button>
+					<a class="btn btn-outline-danger" th:href="@{/order/cancel}">Confirmar</a>
 				</div>
 			</div>
 		</div>

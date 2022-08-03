@@ -12,7 +12,7 @@ import br.com.san.ls.dto.UserLoginDTO;
 @RequestMapping("/login")
 public class LoginController {
 
-	@RequestMapping("/")
+	@RequestMapping({"/", ""})
 	public ModelAndView showLoginForm() {
 		ModelAndView mv = new ModelAndView("/pages/user/login");
 		mv.addObject("login", new UserLoginDTO());

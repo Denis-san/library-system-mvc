@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head
+	th:replace="/fragments/head :: head(title='Bem vindo!', scriptPath='/script/script.js', stylePath='/style/style_home_user.css')">
+</head>
+
+<body class="bg-light">
+	
+	<div th:insert="/fragments/menu_logged :: menuLogged"></div>
+
+	<div id="main">
+		<div class="container mt-4">
+			<h4 class="fw-bold title-welcome">Bem vindo <span th:text="${session.userName}">usuario</span></h4>
+		</div>
+		<div class="container mt-3 mb-5 px-4 py-4 bg-white shadow-sm rounded">
+			<div class="row row-cols-1 row-cols-md-4 g-4">
+				<div class="col text-white">
+					<div class="card rounded-0 border-0 h-100" id="main-card">
+						<div class="p-3 bg-transparent">
+							<h6>Sugestões</h6>
+						</div>
+						<div class="card-body bg-transparent">
+
+						</div>
+						<div class="card-footer bg-transparent border-0">
+							<h4 class="fw-bold">Encontre algo para ler</h4>
+						</div>
+						<div class="card-footer bg-transparent border-0">
+							<small><a href="" class="text-white text-decoration-none">Vamos lá..</a></small>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100 rounded-0 border-0">
+						<img src="../assets/templates/alabaster-co-7hQpDFGVJCw-unsplash.jpg"
+							class="card-img-top rounded-0" alt="...">
+						<div class="card-body">
+							<h5 class="card-title fw-bold">Procurar um livro</h5>
+							<p class="card-text">Por aqui você pode buscar algum livro de seu interesse em nosso acervo.
+							</p>
+						</div>
+						<div class="card-footer bg-transparent border-0">
+							<small><a href="">Procurar por livros</a></small>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100 rounded-0 border-0">
+						<img src="../assets/templates/alex-lvrs-2zDw14yCYqk-unsplash.jpg" class="card-img-top rounded-0"
+							alt="...">
+						<div class="card-body">
+							<h5 class="card-title fw-bold">Sua conta</h5>
+							<p class="card-text">Aqui você pode editar ou ver todos os detalhes e dados da sua conta.
+							</p>
+						</div>
+						<div class="card-footer bg-transparent border-0">
+							<small><a href="">Ver detalhes da conta...</a></small>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100 rounded-0 border-0">
+						<img src="../assets/templates/elnaz-asadi-VcdXeNqh10Y-unsplash.jpg"
+							class="card-img-top rounded-0" alt="...">
+						<div class="card-body">
+							<h5 class="card-title fw-bold">Histórico</h5>
+							<p class="card-text">Aqui você pode ver todos os livros que pegou emprestado.</p>
+						</div>
+						<div class="card-footer bg-transparent border-0">
+							<small><a href="">Ver histórico...</a></small>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr class="mt-4 mb-2">
+
+			<div class="row">
+				<div class="col-sm-2 p-3">
+					<img src="../assets/templates/alex-lvrs-2zDw14yCYqk-unsplash.jpg" class="img-fluid" alt="">
+				</div>
+				<div class="col p-3 div-current-book">
+					<h5 class="fw-bold">Você esta lendo agora: titulo do livro</h5>
+					<p>Um Estudo em Vermelho é um romance policial escrito por Sir Arthur Conan Doyle, publicado
+						originalmente pela revista Beeton's Christmas Annual em novembro de 1887. A primeira edição, em
+						formato de livro, só seria lançada em julho de 1888, com ilustrações da autoria de Richard
+						Gutschmidt.</p>
+					<a href="">Ver detalhes...</a>
+				</div>
+			</div>
+
+		</div>
+
+
+
+	</div>
+</body>
+
+</html>

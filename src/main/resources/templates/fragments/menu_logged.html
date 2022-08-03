@@ -72,8 +72,7 @@
 								<a type="button" class="btn  dropdown-toggle " data-bs-toggle="dropdown"
 									data-bs-display="static" aria-expanded="false">
 									<img src="/assets/icons/perfil.png" class="rounded-circle" width="40" height="40"
-										alt="">
-									Usuario
+										alt=""> <span th:text="${session.userName} ?: 'Usuario'"></span>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-lg-end drop-login border-0 shadow">
 									<li>

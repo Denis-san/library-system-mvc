@@ -110,22 +110,39 @@ public class OrderController {
 				if (order.getOrderStatus() == OrderStatus.REQUESTED) {
 					orderService.updadeStatus(id, OrderStatus.FINISHED);
 				}
-				
+
 				mv.setViewName("/pages/order/order_confirmation");
 				session.removeAttribute("cart");
-				
+
 				mv.addObject("order", order);
 			}
 		}
 
 		return mv;
 	}
-	
+
+	@GetMapping("/status/{id}")
+	public ModelAndView orderStatus(@PathVariable(required = true, name = "id") Integer id) {
+		ModelAndView mv = new ModelAndView("/pages/error");
+
+		if (id != null) {
+
+			Order order = orderService.findOrderById(id);
+
+			if (!order.getItems().isEmpty()) {
+				mv.addObject("order", order);
+				mv.setViewName("/pages/order/order_status");
+			}
+		}
+
+		return mv;
+	}
+
 	@GetMapping("/cancel")
 	public String cancelOrder(HttpSession session) {
-		
+
 		session.removeAttribute("cart");
-		
+
 		return "redirect:/order/review";
 	}
 

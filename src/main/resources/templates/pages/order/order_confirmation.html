@@ -28,15 +28,14 @@
 				<tbody th:each="item : ${order.items}">
 					<tr>
 						<td th:text="${item.book.title}">titulo</td>
-						<td class="text-success fw-bold" th:text="${#temporals.format(order.orderReturn, 'dd/MM/yyyy')}">data</td>
+						<td class="text-success fw-bold"
+							th:text="${#temporals.format(order.orderReturn, 'dd/MM/yyyy')}">data</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<div class="d-grid gap-3 d-md-flex justify-content-md-center mt-5 mb-3">
-				<button class="btn btn-outline-secondary me-md-2 px-4" type="button">Ver detalhes</button>
-				<button class="btn btn-primary px-5" type="button">Continuar</button>
-			</div>
+			<div class="d-grid gap-2 col-6 mx-auto mt-5">
+				<a class="btn btn-primary" th:href="'/order/status/'+${order.id}">Continuar</a>
 		</div>
 	</main>
 </body>

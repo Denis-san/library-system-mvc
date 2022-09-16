@@ -1,17 +1,18 @@
-/*-------------Menu------------------*/
-#menu{
-	background-color: #2f5061;
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+
+.navbar a{
+	font-family: 'Varela', sans-serif;
+	color: black;
 }
 
-#navLinks a{
-	color: white;
+.navbar input, #basic-addon1{
+	background-color: #f8f6f5;
 }
 
-#btnLogin, #btSearch{
-	border-color: #e57f84;
-	color: white;
+ .bi-search{
+	color: rgb(61, 56, 70);
 }
 
-#btnLogin:hover, #btSearch:hover{
-	background-color: #e57f84;
+.search-div{
+	max-width: 500px;
 }

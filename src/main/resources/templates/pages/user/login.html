@@ -5,60 +5,45 @@
 	th:replace="/fragments/head :: head(title='Login - Library System', stylePath='/style/style_login.css', scriptPath='/script/script_login.js')">
 </head>
 
-<body onload="scrollDown()">
+<body>
 
-	<div th:insert="/fragments/menu :: menu"></div>
+	<main class="form-signin w-100 m-auto pt-5">
+		<form action="/login/processLogin" th:action="@{/login/processLogin}" th:object="${login}" method="post">
 
-	<div class="container  mt-4 mb-5 px-5">
-		<div class="container-sm shadow p-5 ">
-			<div class="row">
-				<div class="col-sm-6 leftIconLogin">
+			<div class="text-center mb-4 mt-5">
+				<img src="/assets/icons/logo.png" alt="logo" class="">
+			</div>
 
-					<img src="/assets/icons/icon-home.png" alt="icone login" class="img-fluid mt-5">
+			<div class="mb-3">
+				<label for="inputEmail" class="form-label">Email</label>
+				<input type="email" class="form-control border-dark rounded-0" id="inputEmail" aria-describedby="emailHelp"
+					th:field="*{email}" th:classappend="${emailError} ? is-invalid">
+				<div class="invalid-feedback" th:if="${emailError}">
+					<span th:text="${emailError}"></span>
 				</div>
-
-
-				<div class="col-sm-6 rigthForm">
-					<form action="/login/processLogin" th:action="@{/login/processLogin}" th:object="${login}" method="post">
-
-						<div class="text-center my-4">
-							<img src="/assets/icons/logo-side-duotune.png" alt="logo" class="img-fluid">
-							library System
-						</div>
-
-						<div class="mb-3">
-							<label for="inputEmail" class="form-label">Email</label>
-							<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" th:field="*{email}" th:classappend="${emailError} ? is-invalid">
-							<div class="invalid-feedback" th:if="${emailError}">
-								<span th:text="${emailError}"></span>
-							</div>
-							<div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail com mais ninguém.
-							</div>
-						</div>
-						<div class="mb-3">
-							<label for="inputPassword" class="form-label">Senha</label>
-							<input type="password" class="form-control" id="inputPassword" th:field="*{password}" th:classappend="${passwordError} ? is-invalid">
-							<div class="invalid-feedback" th:if="${passwordError}">
-								<span th:text="${passwordError}"></span>
-							</div>
-						</div>
-						<div class="mb-3 form-check">
-							<input type="checkbox" class="form-check-input" id="check">
-							<label class="form-check-label" for="check">Mantenha-me conectado</label>
-						</div>
-						<button type="submit" class="btn btn-primary px-5">Entrar</button>
-					</form>
-
-					<div class="my-3">
-						Não tem mais acesso a sua conta? <a href="/user/recoveryAccount" class="text-reset">Recupere-a</a>
-						<br>
-						Ainda não possui uma conta? <a href="/user/new" class="text-reset">Cadastre-se</a>
-					</div>
+				<div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail com mais ninguém.
 				</div>
 			</div>
+			<div class="mb-3">
+				<label for="inputPassword" class="form-label">Senha</label>
+				<input type="password" class="form-control border-dark rounded-0" id="inputPassword" th:field="*{password}"
+					th:classapupend="${passwordError} ? is-invalid">
+				<div class="invalid-feedback" th:if="${passwordError}">
+					<span th:text="${passwordError}"></span>
+				</div>
+			</div>
+			<div class="mb-3 form-check">
+				<input type="checkbox" class="form-check-input border-dark rounded-0" id="check">
+				<label class="form-check-label" for="check">Mantenha-me conectado</label>
+			</div>
+			<button type="submit" class="btn btn-dark rounded-0 px-5 w-100">Entrar</button>
+		</form>
+		<div class="my-3">
+			Não tem mais acesso a sua conta? <a href="/user/recoveryAccount" class="text-reset">Recupere-a</a>
+			<br>
+			Ainda não possui uma conta? <a href="/user/new" class="text-reset">Cadastre-se</a>
 		</div>
-	</div>
-
+	</main>
 </body>
 
 </html>

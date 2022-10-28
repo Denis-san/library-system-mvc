@@ -1,53 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
 
-body {
-
-    font-family: 'Quicksand', Helvetica, sans-serif;
+body{
+    font-family: 'Cardo', serif;
 }
 
-#menu,
-.drop-login, .dropdown-menu {
-    background-color: #2f5061;
-}
-
-.dropdown-item {
-    color: white;
-}
-
-#item-button-finish:hover{
-    background-color: #2f5061;
-}
-
-.dropdown-item:hover {
-    color: white;
-    background-color: #375c6e;
-}
-
-.bg-search-input,
-.bg-search-input:focus {
-    background-color: #3a5d6e;
-}
 
 .card,
 .title-welcome,
 .div-current-book {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-#navLinks a {
-    color: white;
-}
-
-#btnLogin,
-#btSearch, #btn-finish {
-    border-color: #e57f84;
-    color: white;
-}
-
-#btnLogin:hover,
-#btSearch:hover, 
-#btn-finish:hover {
-    background-color: #e57f84;
+    font-family: 'Cardo', serif;
 }
 
 #main-card {

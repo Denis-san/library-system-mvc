@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head
-	th:replace="/fragments/head :: head(title='Library System', stylePath='/style/style_home.css', scriptPath='')">
+<head th:replace="/fragments/head :: head(title='Library System', stylePath='/style/style_home.css', scriptPath='')">
 </head>
 
 <body>
@@ -10,44 +9,94 @@
 
 		<div th:insert="/fragments/menu :: menu"></div>
 
-		<div class="container-xxl m-0">
-			<div class="row featurette mt-3">
-				<div class="col-md-7 px-5 py-5">
-					
-					<h2 class="featurette-heading mx-5 pt-5 my-5">
-						Pesquise. 
-						<span class="text-muted">Encontre algo para ler.</span>
-					</h2>
-					
-					<form action="" th:action="@{/book/search/}" class="px-5">
-						<div class="input-group input-group-lg border rounded-pill">
-							<input id="inputSearch" type="text" th:name="search"
-								class="form-control border-0 rounded-pill bg-white fs-5 me-1" aria-label="Sizing example input"
-								aria-describedby="inputGroup-sizing-lg">
+		<div class="container-xxl m-0 p-5 bg-light banner">
+			<div class="container">
+				<h1 class="fs-1"> Ebooks. </h1>
 
-							<button type="submit"
-								class="text-decoration-none text-white input-group-text border-0 rounded-pill px-4"
-								id="btSearch">
-								<span class="" id="inputGroup-sizing-lg">Buscar</span>
-							</button>
-						</div>
-						
-						<p class="lead mt-4">Pesquise por livros, artigos, revistas etc. Para facilitar, use termos
-							relevantes, para que os resultados sejam mais precisos. 
-						</p>
-					</form>
-					
+				<hr>
+
+				<div class="div-paragraph text-muted">
+					<p class="lead mt-4 ">Pesquise por livros, artigos, revistas etc. Para facilitar, use termos
+						relevantes, para que os resultados sejam mais precisos.
+					</p>
 				</div>
-				
-				<div class="col-md-5 mt-5 ">
-					<img src="" th:src="@{/assets/icons/icon-home.png}" alt="" class="img-fluid">
-				</div>
-				
+
+				<button class="btn btn-outline-dark px-5 rounded-0 mt-4">Explorar</button>
+
 			</div>
+		</div>
+
+		<div class="container mt-5">
+			<div class="row div-category mb-3">
+				<div class="col-sm-10">
+					<h6 class="fw-bold">Categorias em destaque</h6>
+				</div>
+				<div class="col-sm-2 text-end">
+					<button class="btn ">Ver todas <i class="bi bi-chevron-right"></i></button>
+				</div>
+			</div>
+
+			<div class="row row-cols-1 row-cols-md-5 g-4">
+				<div class="col">
+					<div class="card h-100 border-0 alert-primary pt-3 ps-3">
+						<div class="card-body">
+							<h1><i class="bi bi-controller"></i></h1>
+						</div>
+						<div class="card-footer border-0 bg-transparent">
+							<h5>Aventura</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100 border-0 alert-danger pt-3 ps-3">
+						<div class="card-body">
+							<h1><i class="bi bi-balloon-heart"></i></h1>
+						</div>
+						<div class="card-footer border-0 bg-transparent">
+							<h5>Romance</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100 border-0 alert-success pt-3 ps-3">
+						<div class="card-body">
+							<h1><i class="bi bi-currency-dollar"></i></h1>
+						</div>
+						<div class="card-footer border-0 bg-transparent">
+							<h5>Finanças</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100 border-0 alert-info pt-3 ps-3">
+						<div class="card-body">
+							<h1><i class="bi bi-activity"></i></h1>
+						</div>
+						<div class="card-footer border-0 bg-transparent">
+							<h5>Ciências</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100 border-0 alert-warning pt-3 ps-3">
+						<div class="card-body">
+							<h1><i class="bi bi-mortarboard"></i></h1>
+						</div>
+						<div class="card-footer border-0 bg-transparent">
+							<h5>Educação</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="my-5">
 
 		</div>
 
 	</main>
 
 </body>
+
 </html>

@@ -21,7 +21,9 @@ public class LoginController {
 
 	@PostMapping("/processLogin")
 	public ModelAndView processLogin(@ModelAttribute("login") UserLoginDTO login) {
-		ModelAndView mv = new ModelAndView("/pages/user/login");
+		
+		// TODO login logic here 
+		ModelAndView mv = new ModelAndView("/pages/user/user-home");
 		
 		return mv;
 	}

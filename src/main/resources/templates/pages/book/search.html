@@ -9,102 +9,99 @@
 
 	<div th:insert="/fragments/menu :: menu"></div>
 
-	<div class=" container my-5 shadow rounded-3">
+	<div class="container">
+		<h5 class="my-4 fw-bold">Resultados para "<span th:text="${search}"></span>"</h5>
 
-		<div class="bg-white my-3 p-4">
-			<h3 class="p-3 title-search">
-				<i class="bi bi-search "></i>
-				Resultados da busca por: "<span th:text="${search}"></span>"
-			</h3>
 
-			<div class="navbar-brand py-0 container-fluid">
-				<form action="" th:action="@{/book/search}" method="post" class="">
-					<div class="input-group input-group border rounded-pill">
-						<div class="text-decoration-none input-group-text border-0 rounded-pill bg-white">
-							<span id="inputGroup-sizing-lg"><i class="bi bi-search"></i></span>
-						</div>
-						<input id="inputSearch" type="text"
-							class="form-control border-0 bg-transparent fs-6 rounded-pill"
-							aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
-							th:value="${search}" name="search">
+		<div class="row">
+			<div class="col-sm-2">
 
-						<button class="input-group-text rounded-pill bg-white px-4" type="submit">
-							<span id="inputGroup-sizing-lg"><i class="bi bi-search me-2"></i>Buscar</span>
-						</button>
-					</div>
-				</form>
+				<h6>Categoria</h6>
+				<ul class="list">
+					<li><a href="#">Categoria 1</a></li>
+					<li><a href="#">Categoria 2</a></li>
+					<li><a href="#">Categoria 3</a></li>
+					<li><a href="#">Categoria 4</a></li>
+				</ul>
+				<hr>
+				<div class="form-check">
+					<input class="form-check-input rounded-0 border-dark" type="checkbox" value=""
+						id="flexCheckIndeterminate">
+					<label class="form-check-label" for="flexCheckIndeterminate">
+						Apenas disponíveis
+					</label>
+				</div>
+				<hr>
+				<h6>Autor</h6>
+				<ul class="list">
+					<li><a href="#">Autor 1</a></li>
+					<li><a href="#">Autor 2</a></li>
+					<li><a href="#">Autor 3</a></li>
+					<li><a href="#">Autor 4</a></li>
+				</ul>
+				<hr>
+				<h6>Avaliações</h6>
+				<ul class="list">
+					<li><a href="#">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i>
+						</a>
+					</li>
+					<li><a href="#">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+						</a>
+					</li>
+					<li><a href="#">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+						</a>
+					</li>
+					<li><a href="#">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i
+								class="bi bi-star"></i><i class="bi bi-star"></i>
+						</a>
+					</li>
+					<li><a href="#">
+							<i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i
+								class="bi bi-star"></i><i class="bi bi-star"></i>
+						</a>
+					</li>
+				</ul>
+
+				<hr>
+
+
+
 			</div>
+			<div class="col-sm-10">
 
-		</div>
+				<div class="row row-cols-1 row-cols-md-5 g-3">
 
-
-		<div class="container bg-white" th:each="book : ${listBook}">
-
-			<div class="row mx-5">
-				<div class="col-sm-3">
-					<div class="p-3">
-						<div class="card border-0">
-							<div class="card-img-top text-center bg-light ">
-								<div class="img-fade">
-									<img src="../../assets/books-templates/sherlock.png"
-										th:src="(${book.pathCloak})? ${book.pathCloak} : '/assets/book-templates/template_upload_cloak.png'"
-										class="w-100">
-									<div class="overlay">
-										<div class="text-card-img">
-											<button class="btn btn-outline-light px-5">Ver</button>
-										</div>
-									</div>
-								</div>
+					<div class="col" th:each="book : ${listBook}">
+						<div class="card h-100 rounded-0 border-0">
+							<img th:src="@{${book.pathCloak}}" class="card-img-top rounded-0" alt="...">
+							<div class="card-body px-0 pb-0">
+								<h6 class="card-title my-0" th:text="${book.title}">Titulo do livro</h6>
+								<p class="card-text" th:text="${book.authors.get(0).name}">Autor</p>
+							</div>
+							<div class="card-footer p-0 border-0 bg-transparent">
+								<small class="text-dark"><i class="bi bi-star-fill"></i><i
+										class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+										class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></small>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-sm-9">
-					<div class="my-4">
-						<a th:href="@{'/book/details/' + ${book.id}}" class="text-decoration-none text-dark">
-							<h2 th:text="${book.title}">title</h2>
-						</a>
-					</div>
-
-					<div class="book-description">
-						<p th:text="${book.description}">description</p>
-					</div>
-					<div class="mt-5">
-						<span class="fw-bold"
-							th:classappend="(${book.inventoryQuantity} > 0)? text-success : text-danger">
-							<i th:classappend="(${book.inventoryQuantity} > 0)? 'bi bi-check-circle-fill' : 'bi bi-x-circle-fill'"></i>
-							<span
-								th:text="(${book.inventoryQuantity} > 0)? 'Disponível' : 'Indísponível'">Disponível</span>
-						</span>
-					</div>
+					
+					
 				</div>
 			</div>
-
 		</div>
 
+	</div>
 
-		<div class="container mt-3">
-			<nav aria-label="Page navigation container-fluid bg-white">
-				<ul class="pagination justify-content-center py-4">
-					<li class="page-item disabled">
-						<a class="page-link">Previous</a>
-					</li>
-					<li class="page-item page-number-active"><a class="page-link" href="#">1</a></li>
-					<li class="page-item page-number"><a class="page-link" href="#">2</a></li>
-					<li class="page-item page-number"><a class="page-link" href="#">3</a></li>
-					<li class="page-item page-number"><a class="page-link" href="#">4</a></li>
-					<li class="page-item page-number"><a class="page-link" href="#">5</a></li>
-					<li class="page-item page-number"><a class="page-link">...</a></li>
-					<li clas	s="page-item page-number"><a class="page-link" href="#">3312</a></li>
 
-					<li class="page-item">
-						<a class="page-link" href="#">Next</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-
-		</main>
 
 </body>
 

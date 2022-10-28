@@ -1,25 +1,15 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
 * {
     box-sizing: border-box;
   }
   
  
   body {
-    font-family: 'Quicksand', Helvetica, sans-serif;
+    font-family: 'Cardo', serif;
     margin: 0;
   }
   
-
-#leftSideRegister{
-  background-image: url('/assets/background-images/side-duo.jpg');
-  background-size: 100%;
-  
-}
-
-
-#leftSideRegister a {
-  color: white;
+.form-signin {
+  max-width: 400px;
+  padding: 15px;
 }

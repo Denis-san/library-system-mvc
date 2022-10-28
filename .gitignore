@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### book templates ###
+/src/main/resources/static/assets/book-templates
+

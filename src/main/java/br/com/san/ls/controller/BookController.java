@@ -1,6 +1,7 @@
 package br.com.san.ls.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.san.ls.entity.Author;
 import br.com.san.ls.entity.Book;
 import br.com.san.ls.service.BookService;
 
@@ -32,8 +34,11 @@ public class BookController {
 			results = bookService.search(search);
 		}
 
+		Set<Author> authorsFromSearchResult =  bookService.getAllAuthorsFromSearchResult(results);
+		
 		mv.addObject("listBook", results);
 		mv.addObject("search", search);
+		mv.addObject("allAuthorsInTheSearch", authorsFromSearchResult);
 		return mv;
 	}
 
@@ -42,8 +47,14 @@ public class BookController {
 		ModelAndView mv = new ModelAndView("/pages/book/bookDetails");
 
 		Book book = bookService.getBookById(id);
+		
+		// TODO remove, refactor to correct method, create him
+		List<Book> booksRel = bookService.getAllBooks();
 
 		mv.addObject("book", book);
+		
+		// TODO Refactor to task before
+		mv.addObject("listBook", booksRel);
 
 		return mv;
 	}

@@ -1,11 +1,14 @@
 package br.com.san.ls.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.san.ls.dao.BookDao;
+import br.com.san.ls.entity.Author;
 import br.com.san.ls.entity.Book;
 import br.com.san.ls.service.BookService;
 
@@ -47,6 +50,15 @@ public class BookServiceImpl implements BookService {
 	public Long getQuantityOfBookRecords() {
 		Long result = bookDao.quantityOfBookRecords();
 		return result;
+	}
+
+	@Override
+	public Set<Author> getAllAuthorsFromSearchResult(List<Book> results) {
+		Set<Author> authors = new HashSet<Author>();
+		
+		results.stream().forEach(e -> authors.addAll(e.getAuthors()));
+		
+		return authors;
 	}
 
 }

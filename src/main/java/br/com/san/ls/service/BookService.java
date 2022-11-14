@@ -1,7 +1,9 @@
 package br.com.san.ls.service;
 
 import java.util.List;
+import java.util.Set;
 
+import br.com.san.ls.entity.Author;
 import br.com.san.ls.entity.Book;
 
 public interface BookService {
@@ -17,5 +19,7 @@ public interface BookService {
 	public void deleteBookById(Integer id);
 
 	public Long getQuantityOfBookRecords();
+
+	public Set<Author> getAllAuthorsFromSearchResult(List<Book> results);
 
 }

@@ -33,11 +33,8 @@
 				</div>
 				<hr>
 				<h6>Autor</h6>
-				<ul class="list">
-					<li><a href="#">Autor 1</a></li>
-					<li><a href="#">Autor 2</a></li>
-					<li><a href="#">Autor 3</a></li>
-					<li><a href="#">Autor 4</a></li>
+				<ul class="list" th:each="author : ${allAuthorsInTheSearch}">
+					<li><a href="#" th:text="${author.name}">Autor 1</a></li>
 				</ul>
 				<hr>
 				<h6>Avaliações</h6>
@@ -93,7 +90,6 @@
 							</div>
 						</div>
 					</div>
-					
 					
 				</div>
 			</div>

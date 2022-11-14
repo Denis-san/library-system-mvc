@@ -1,24 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap');
-
+body{
+    font-family: 'Cardo', serif;
+    margin: 0;
+}
 
 * {
     box-sizing: border-box;
-  }
-  
- 
-  body {
-    font-family: 'Quicksand', Helvetica, sans-serif;
-    margin: 0;
-  }
-
-  .bi-star-fill, .bi-star-half, .bi-star {
-      color: #4297a0;
-  }
-
-  .bt-loan{
-      background-color: #4297a0;
-      color: white;
   }
 
 	button:disabled, button[disabled]{
@@ -26,46 +15,6 @@
 		background-color: #a60505;
 	}
 	
-
-  .bt-loan:hover {
-    color: white;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #7e7e7e;
-  }
-  
-  .img-fade:hover .overlay {
-    opacity: 1;
-    background-color: #7e7e7e9c;
-  }
-  
-  .text-card-img {
-    color: white;
-    font-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-
-  .card-info{
-    border-radius: 1rem;
-  }
-
   .accordion-item {
     border-radius: 1rem;
   }

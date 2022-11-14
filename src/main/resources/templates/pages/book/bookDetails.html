@@ -5,19 +5,19 @@
 	th:replace="/fragments/head :: head(title=${book.title}, scriptPath='/script/script.js', stylePath='/style/style_book_details.css')">
 </head>
 
-<body class="bg-light">
+<body>
 
 	<div th:insert="/fragments/menu :: menu"></div>
 
 	<div class="container marketing my-5">
 
-		<div class="card border-0 shadow mb-3 card-info">
+		<div class="card border-0 mb-3">
 			<div class="row g-0">
-				<div class="col-md-4 p-5">
+				<div class="col-md-3 p-5">
 					<img th:src="(${book.pathCloak})? ${book.pathCloak} : '/assets/book-templates/template_upload_cloak.png'"
 						class="img-fluid rounded-start" alt="...">
 				</div>
-				<div class="col-md-8 mt-5">
+				<div class="col-md-8 mt-4">
 					<div class="card-body">
 						<h5 class="card-title fs-2 fw-bolder" th:text="${book.title}">title</h5>
 
@@ -29,7 +29,7 @@
 									th:text="${author.name} + ' '">author </a>
 							</div>
 
-							<div class="my-3">
+							<div class="my-3 text-dark">
 								<i class="bi bi-star-fill"></i>
 								<i class="bi bi-star-fill"></i>
 								<i class="bi bi-star-fill"></i>
@@ -60,10 +60,10 @@
 								<div class="col-md-6">
 
 									<div class="d-grid gap-2 px-3 text-center">
-										
-										<a class="rounded bt-loan border-0 py-2 fs-5 fw-bold text-decoration-none"
+
+										<a class="rounded btn btn-outline-dark rounded-0 py-2 fs-5 fw-bold text-decoration-none"
 											th:classappend="(${book.inventoryQuantity} <= 0)? 'cursor-block'"
-											th:disabled="${book.inventoryQuantity} <= 0" 
+											th:disabled="${book.inventoryQuantity} <= 0"
 											th:href="@{'/order/cart/lend/'+${book.id}}">
 											<i class="bi bi-hand"></i>
 											Pegar emprestado
@@ -103,7 +103,7 @@
 		</div>
 
 
-		<div class="card card-info shadow border-0 mb-3">
+		<div class="card card-info  border-0 mb-3">
 			<div class="row g-0">
 				<div class="col-md-1 ps-4 pt-4">
 					<img src="../assets/image/edward-cisneros-_H6wpor9mjs-unsplash.jpg" class="img-fluid rounded-circle"
@@ -111,7 +111,7 @@
 				</div>
 				<div class="col-md-8 pt-2">
 					<div class="card-body">
-						<h5 class="card-title">Comentário <div style="color: yellow;">
+						<h5 class="card-title">Comentário <div>
 								<i class="bi bi-star-fill"></i>
 								<i class="bi bi-star-fill"></i>
 								<i class="bi bi-star-fill"></i>
@@ -130,7 +130,7 @@
 
 
 
-		<div class="card card-info shadow border-0 mb-3">
+		<div class="card card-info  border-0 mb-3">
 			<div class="row g-0">
 				<div class="col-md-1 ps-4 pt-4">
 					<img src="../../assets/books-templates/sherlock.png" class="img-fluid rounded-circle" alt="..."
@@ -138,7 +138,7 @@
 				</div>
 				<div class="col-md-8 pt-2">
 					<div class="card-body">
-						<h5 class="card-title">Comentário <div style="color: yellow;">
+						<h5 class="card-title">Comentário <div>
 								<i class="bi bi-star-fill"></i>
 								<i class="bi bi-star-fill"></i>
 								<i class="bi bi-star"></i>
@@ -154,11 +154,7 @@
 			</div>
 		</div>
 
-
-
-
-
-		<div class="card card-info shadow border-0 mb-3">
+		<div class="card card-info  border-0 mb-3">
 			<div class="row g-0">
 				<div class="col-md-1 ps-4 pt-4">
 					<img src="../../assets/books-templates/sherlock.png" class="img-fluid rounded-circle" alt="..."
@@ -166,7 +162,7 @@
 				</div>
 				<div class="col-md-8 pt-2">
 					<div class="card-body">
-						<h5 class="card-title">Comentário <div style="color: yellow;">
+						<h5 class="card-title">Comentário <div>
 								<i class="bi bi-star-fill"></i>
 								<i class="bi bi-star-fill"></i>
 								<i class="bi bi-star-fill"></i>
@@ -183,170 +179,41 @@
 		</div>
 
 
-		<div class="w-100 text-center card-info shadow py-3 bg-white my-3">
+		<div class="w-100 text-center card-info  py-3 bg-white my-3">
 			<a href="/comments">Carregar mais comentarios...</a>
 		</div>
 
+		<div class="row row-cols-1 row-cols-md-5 g-3">
 
-
-		<div class="container card-info shadow bg-white p-4 pb-5">
-
-			<div class="container-fluid my-4">
-				<h5>Você pode gostar:</h5>
+			<div class="col" th:each="book : ${listBook}">
+				<div class="card h-100 rounded-0 border-0">
+					<img th:src="@{${book.pathCloak}}" class="card-img-top rounded-0" alt="...">
+					<div class="card-body px-0 pb-0">
+						<h6 class="card-title my-0" th:text="${book.title}">Titulo do livro</h6>
+						<p class="card-text" th:text="${book.authors.get(0).name}">Autor</p>
+					</div>
+					<div class="card-footer p-0 border-0 bg-transparent">
+						<small class="text-dark"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+								class="bi bi-star-fill"></i></small>
+					</div>
+				</div>
 			</div>
 
-			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-
-				<div class="col">
-
-					<div class="border-0 shadow px-0">
-						<div class="card border-0 w-100 ">
-							<div class="card-img-top text-center pt-5 pe-5 ps-5 pb-3 bg-light">
-
-								<div class="img-fade">
-									<img src="../../assets/books-templates/sherlock.png" class="img-fluid">
-									<div class="overlay">
-										<div class="text-card-img">
-											<button class="btn btn-outline-light">Ver detalhes</button>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
-						<div class="card-body ">
-
-							<h5 class="card-title fs-6 fw-bolder">
-								<a class="text-decoration-none text-reset" href="">
-									Um estudo em vermelho (sherlock Holmes)</a>
-							</h5>
-
-							<small>
-								<a class="mt-0 text-muted text-decoration-none" href="">Arthur Conan Doyle</a>
-							</small>
-
-							<p class="text-danger pt-4">Indisponível<i class="bi bi-exclamation-circle ms-2"></i></p>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="border-0 shadow px-0">
-						<div class="card border-0 w-100 ">
-							<div class="card-img-top text-center pt-5 pe-5 ps-5 pb-3 bg-light">
-
-								<div class="img-fade">
-									<img src="../../assets/books-templates/sherlock.png" class="img-fluid">
-									<div class="overlay">
-										<div class="text-card-img">
-											<button class="btn btn-outline-light">Ver detalhes</button>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
-						<div class="card-body ">
-
-							<h5 class="card-title fs-6 fw-bolder">
-								<a class="text-decoration-none text-reset" href="">
-									Um estudo em vermelho (sherlock Holmes)</a>
-							</h5>
-
-							<small>
-								<a class="mt-0 text-muted text-decoration-none" href="">Arthur Conan Doyle</a>
-							</small>
-
-							<p class="text-danger pt-4">Indisponível<i class="bi bi-exclamation-circle ms-2"></i></p>
-
-						</div>
-					</div>
-				</div>
-
-
-				<div class="col">
-					<div class="col border-0 shadow px-0">
-						<div class="card border-0 w-100 ">
-							<div class="card-img-top text-center pt-5 pe-5 ps-5 pb-3 bg-light">
-
-								<div class="img-fade">
-									<img src="../../assets/books-templates/sherlock.png" class="img-fluid">
-									<div class="overlay">
-										<div class="text-card-img">
-											<button class="btn btn-outline-light">Ver detalhes</button>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
-						<div class="card-body ">
-
-							<h5 class="card-title fs-6 fw-bolder">
-								<a class="text-decoration-none text-reset" href="">
-									Um estudo em vermelho (sherlock Holmes)</a>
-							</h5>
-
-							<small>
-								<a class="mt-0 text-muted text-decoration-none" href="">Arthur Conan Doyle</a>
-							</small>
-
-							<p class="text-danger pt-4">Indisponível<i class="bi bi-exclamation-circle ms-2"></i></p>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="border-0 shadow px-0">
-						<div class="card border-0 w-100 ">
-							<div class="card-img-top text-center pt-5 pe-5 ps-5 pb-3 bg-light">
-
-								<div class="img-fade">
-									<img src="../../assets/books-templates/sherlock.png" class="img-fluid">
-									<div class="overlay">
-										<div class="text-card-img">
-											<button class="btn btn-outline-light">Ver detalhes</button>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
-						<div class="card-body ">
-
-							<h5 class="card-title fs-6 fw-bolder">
-								<a class="text-decoration-none text-reset" href="">
-									Um estudo em vermelho (sherlock Holmes)</a>
-							</h5>
-
-							<small>
-								<a class="mt-0 text-muted text-decoration-none" href="">Arthur Conan Doyle</a>
-							</small>
-
-							<p class="text-danger pt-4">Indisponível<i class="bi bi-exclamation-circle ms-2"></i></p>
-
-						</div>
-					</div>
-				</div>
-
-			</div>
 		</div>
 
-		<!-- Modal -->
 
-		<!-- FOOTER -->
-		<footer class="container border-top pt-4 mt-5">
-			<p class="float-end"><a href="#">Back to top</a></p>
-			<p>&copy; 2017–2021 Company, Inc. &middot; <a href="pages/login/logged.html">link login</a> &middot; <a
-					href="#">Terms</a></p>
-		</footer>
-		</main>
+	</div>
+
+	<!-- Modal -->
+
+	<!-- FOOTER -->
+	<footer class="container border-top pt-4 mt-5">
+		<p class="float-end"><a href="#">Back to top</a></p>
+		<p>&copy; 2017–2021 Company, Inc. &middot; <a href="pages/login/logged.html">link login</a> &middot; <a
+				href="#">Terms</a></p>
+	</footer>
+	</main>
 
 </body>
 

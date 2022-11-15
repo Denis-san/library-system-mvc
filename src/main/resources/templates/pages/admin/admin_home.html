@@ -4,7 +4,7 @@
 <head th:replace="/fragments/admin/head_fragment.html :: head(title='Bem vindo Admin!', scriptPath='/script/script_admin_home.js', stylePath='/style/style_admin_home.css')">
 </head>
 
-<body class="bg-light">
+<body class="bg-white">
 
 <div th:insert="/fragments/admin/menu_admin :: menu"></div>
 
@@ -12,19 +12,19 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-sm-6">
-                <div class="p-3 bg-white h-100 card-info shadow">
+                <div class="p-3 bg-white h-100 border rounded-0">
                     <div class="text-center">
                         <h4>Olá Admin!</h4>
                     </div>
                     <div class="row mt-4">
                         <div class="col-sm-6">
-                            <button class="btn btn-outline-secondary w-100 h-100">
+                            <button class="btn btn-outline-dark rounded-0 w-100 h-100">
                                 <i class="bi bi-list-ul fs-5 me-3"></i>
                                 Listar todos os livros</button>
                         </div>
 
                         <div class="col-sm-6">
-                            <button class="btn btn-outline-secondary w-100 h-100">
+                            <button class="btn btn-outline-dark rounded-0 w-100 h-100">
                                 <i class="bi bi-gear fs-5 me-3"></i>
                                 Acessar configurações do sistema</button>
                         </div>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="col-sm-3">
-                <div class="p-3 bg-white h-100 card-info shadow">
+                <div class="p-3 bg-white h-100 border rounded-0">
                     <div class="text-center pt-3">
                         <h4><i class="bi bi-box me-2"></i>Estoque atual:</h4>
                         <h1 class="mt-4 fw-bold" th:text="${quantityBookRegister}">75</h1>
@@ -46,7 +46,7 @@
             </div>
 
             <div class="col-sm-3">
-                <div class="p-3 bg-white h-100 card-info shadow">
+                <div class="p-3 bg-white h-100 border rounded-0">
                     <div class="text-center pt-3">
                         <h4><i class="bi bi-bookmarks me-2"></i>Em empréstimo:</h4>
                         <h1 class="mt-4 fw-bold">12</h1>
@@ -60,11 +60,11 @@
         <div class="row mt-4">
             <div class="col-sm-4">
                 <a href="/" th:href="@{/admin/register/book}" class="text-reset text-decoration-none">
-                    <div class="pt-2 h-100 shadow info-card" id="card1">
+                    <div class="pt-2 h-100 border rounded-0 card-button">
                         <div class=" pt-3 ps-3 pe-3">
                             <h4><i class="bi bi-gear me-2"></i></h4>
                             <h4>Registrar novos livros</h4>
-                            <h1 class=" text-end fw-bold"><i class="bi bi-plus-circle-fill icon-back"></i></h1>
+                            <h1 class=" text-end fw-bold"><i class="bi bi-plus-circle-fill"></i></h1>
                         </div>
 
                     </div>
@@ -73,11 +73,11 @@
 
             <div class="col-sm-4">
                 <a href="" th:href="@{/admin/list/book}" class="text-reset text-decoration-none">
-                    <div class="pt-2 h-100 shadow info-card" id="card2">
+                    <div class="pt-2 h-100 card-button border rounded-0">
                         <div class=" pt-3 ps-3 pe-3">
                             <h4><i class="bi bi-gear me-2"></i></h4>
                             <h4>Editar livros</h4>
-                            <h1 class=" text-end fw-bold"><i class="bi bi-pencil-square icon-back"></i></h1>
+                            <h1 class="text-end fw-bold"><i class="bi bi-pencil-square"></i></h1>
                         </div>
 
                     </div>
@@ -86,11 +86,11 @@
 
             <div class="col-sm-4">
                 <a href="" th:href="@{/admin/list/book}" class="text-reset text-decoration-none">
-                    <div class="pt-2 h-100 shadow info-card" id="card3">
+                    <div class="pt-2 h-100 card-button border rounded-0">
                         <div class=" pt-3 ps-3 pe-3">
                             <h4><i class="bi bi-gear me-2"></i></h4>
                             <h4>Remover Livros</h4>
-                            <h1 class=" text-end fw-bold"><i class="bi bi-trash icon-back"></i></h1>
+                            <h1 class=" text-end fw-bold"><i class="bi bi-trash "></i></h1>
                         </div>
 
                     </div>

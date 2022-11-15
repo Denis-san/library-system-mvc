@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
 
 body{
-	font-family: 'Ubuntu';
+    font-family: 'Cardo', serif;
 }
 
 .div-center {
@@ -13,14 +14,4 @@ body{
 
 table thead, tbody, td, th{
     border: none;
-}
-
-.btn-primary{
-    background: #e57f84;
-    border-color: #e57f84;
-}
-
-.btn-primary:hover{
-    background-color: #e06f75;
-    border-color: #e06f75;
 }

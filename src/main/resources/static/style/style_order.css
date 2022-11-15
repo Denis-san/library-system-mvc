@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
 
+body{
+    font-family: 'Cardo', serif;
+      margin: 0;
+    position: relative; 
+}
 
 * {
     box-sizing: border-box;
   }
  
-  body {
-    font-family: 'Quicksand', Helvetica, sans-serif;
-    margin: 0;
-    position: relative; 
-  }
-
   .side-img img{
       max-height: 200px;
   }
@@ -19,19 +18,6 @@
   .side-right-img {
     max-height: 120px;
   }
-
-  .bt-loan{
-    background-color: #4297a0;
-    color: white;
-}
-
-.bt-loan:hover {
-  color: white;
-}
-
-.title-order{
-  font-family: 'Josefin Sans', sans-serif;
-}
 
 .card-info{
   border-radius: 1rem;

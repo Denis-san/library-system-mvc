@@ -9,9 +9,9 @@
 
 	<div th:insert="/fragments/menu_logged :: menuLogged"></div>
 
-	<main class="div-center mt-5 shadow bg-white text-white">
+	<main class="div-center mt-5 border rounded-0 bg-white text-white">
 
-		<div class="px-4 pt-5 py-2" style="background-color: #4297a0;">
+		<div class="px-4 pt-5 py-2 bg-dark">
 			<i class="bi bi-check-circle fs-1"></i>
 			<h2>Pedido confirmado!</h2>
 			<p>Recebemos seu pedido com sucesso! </p>
@@ -35,7 +35,7 @@
 			</table>
 
 			<div class="d-grid gap-2 col-6 mx-auto mt-5">
-				<a class="btn btn-primary" th:href="'/order/status/'+${order.id}">Continuar</a>
+				<a class="btn btn-dark rounded-0" th:href="'/order/status/'+${order.id}">Continuar</a>
 		</div>
 	</main>
 </body>

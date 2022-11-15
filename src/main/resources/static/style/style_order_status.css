@@ -17,18 +17,8 @@ body {
     left: 25%;
 }
 
-.btn-primary{
-    background-color: #4297a0;
-    border-color: #4297a0;
-}
-
-.btn-primary:hover{
-    background-color: #4297a0;
-    border-color: #4297a0;
-}
-
 .progress-bar{
-    background-color: #4297a0;
+    background-color: #212529;
 }
 
 .title-book-paragraph {

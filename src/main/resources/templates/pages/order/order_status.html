@@ -8,17 +8,17 @@
 <body>
 	<div th:insert="/fragments/menu_logged :: menuLogged"></div>
 
-	<main class="div-center mt-5 pb-4 shadow">
-		<div class="px-5 pt-5 py-2 mb-5 text-white" style="background-color: #e57f84;">
+	<main class="div-center mt-5 pb-4 mb-5 border rounded-0">
+		<div class="px-5 pt-5 py-2 mb-5 text-white bg-dark">
 			<h1><i class="bi bi-box-seam fs-1 me-2"></i>Status do pedido</h1>
 			<h2>#4297a0</h2>
 			<p>Acompanhe o status de cada livro </p>
 		</div>
 
-		<div class="py-4 px-5 m-4 div-track rounded-3 border">
+		<div class="py-4 px-5 m-4 div-track rounded-0 border">
 			<div class="row">
 				<div class="col">
-					<h5>Item: <span style="color: rgb(30 141 252);">#412</span></h5>
+					<h5>Item: <span>#412</span></h5>
 				</div>
 				<div class="col text-end pt-2">
 					<p th:each="item : ${order.items}" th:text="${item.book.title}" class="title-book-paragraph">
@@ -37,13 +37,13 @@
 					<!-- button one -->
 					<button type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
 						aria-controls="collapseOne" style="width: 3rem; height: 3rem;"
-						class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill">
+						class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-dark rounded-pill">
 						<i class="bi bi-box-seam fs-4"></i>
 					</button>
 
 					<!-- button two -->
 					<button type="button" style="width: 3rem; height: 3rem;" data-bs-toggle="collapse"
-						class="position-absolute top-0 start-25 translate-middle btn btn-sm btn-primary rounded-pill"
+						class="position-absolute top-0 start-25 translate-middle btn btn-sm btn-dark rounded-pill"
 						data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 						<i class="bi bi-check-all fs-4"></i>
 					</button>
@@ -51,20 +51,20 @@
 					<!-- button three -->
 					<button type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
 						aria-expanded="false" aria-controls="collapseThree" style="width: 3rem; height: 3rem;"
-						class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary rounded-pill">
+						class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-dark rounded-pill">
 						<i class="bi bi-book fs-4"></i>
 					</button>
 
 					<!-- button four -->
 					<button type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
 						aria-controls="collapseFour" style="width: 3rem; height: 3rem;"
-						class="position-absolute top-0 start-75 translate-middle btn btn-sm btn-primary rounded-pill">
+						class="position-absolute top-0 start-75 translate-middle btn btn-sm btn-dark rounded-pill">
 						<i class="bi bi-reply fs-4"></i>
 					</button>
 					<!-- button five -->
 					<button type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
 						aria-controls="collapseFive" style="width: 3rem; height: 3rem;"
-						class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-primary rounded-pill">
+						class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-dark rounded-pill">
 						<i class="bi bi-calendar2 fs-4"></i>
 					</button>
 				</div>

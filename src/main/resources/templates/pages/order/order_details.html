@@ -13,7 +13,7 @@
 		<div class="row">
 
 			<div class="col-md-8 mt-4">
-				<div class="container bg-white py-3 pb-2">
+				<div class="container bg-white py-3 pb-2 ms-3">
 					<h4 class="fw-bold pb-0 title-order">
 						<i class="bi bi-book mx-3"></i>
 						Revise seu pedido:
@@ -22,20 +22,21 @@
 				</div>
 
 				<div th:each="item : ${session.cart.items}">
-					<div class="card border my-3">
+					<div class="card border rounded-0 my-3 ms-5">
 						<div class="row g-0">
-							<div class="col-md-3 side-img text-center">
-								<img src="/assets/book-templates/template_upload_cloak.png"
-									class="img-fluid rounded-start" alt="...">
+							<div class="col-md-2 pt-2 side-img text-center">
+								<img th:src="${item.book.pathCloak} ?: '/assets/book-templates/template_upload_cloak.png'"
+									class="img-fluid" alt="...">
 							</div>
-							<div class="col-md-9 mt-4">
+							<div class="col-md-10 pt-4 ps-3">
 								<div class="card-body">
 									<h5 class="card-title fs-4 fw-bolder" th:text="${item.book.title}">Title</h5>
 
 									<div class="fw-bold">
 										<p>Código do pedido: <span class="fw-normal"></span></p>
 										<p>Data do pedido: <span class="fw-normal"
-												 th:text="${#temporals.format(session.cart.orderMoment, 'dd/MM/yyyy')}">04/02/2022</span></p>
+												th:text="${#temporals.format(session.cart.orderMoment, 'dd/MM/yyyy')}">04/02/2022</span>
+										</p>
 									</div>
 
 
@@ -49,7 +50,7 @@
 											<div class="col-md-6">
 
 												<div class="d-grid gap-2 px-3">
-													<a class="btn btn-outline-danger"
+													<a class="btn btn-outline-danger rounded-0"
 														th:href="'/order/cart/remove/'+${item.book.id}">
 														<i class="bi bi-trash"></i>
 														Remover
@@ -105,7 +106,7 @@
 
 				<ul class="list-group  p-3 py me-3 pb-3 bg-transparent">
 					<li class="list-group-item border-0" th:each="itemBook : ${session.cart.items}">
-						<div class="card card-info shadow-sm p-2">
+						<div class="card border rounded-0  shadow-sm p-2">
 							<div class="row g-0">
 								<div class="col-md-3 p-2 text-center">
 									<img src="/assets/book-templates/template_upload_cloak.png"
@@ -129,7 +130,7 @@
 					</li>
 
 					<li class="list-group-item border-0" th:if="${session.cart.items.size} < 3">
-						<div class="card card-info btn-add shadow-sm p-2">
+						<div class="card border rounded-0 btn-add shadow-sm p-2">
 							<div class="row g-0">
 								<div class="col-md-3 p-2 text-center">
 									<i class="bi bi-plus-circle  fs-1"></i>
@@ -154,8 +155,9 @@
 
 					<li class="list-group-item border-0 mt-3">
 						<div class="d-grid gap-2">
-							<a class="btn bt-loan btn-lg" th:href="@{/order/processOrder}">Finalizar Pedido</a>
-							<button class="btn btn-outline-danger btn-lg" data-bs-toggle="modal"
+							<a class="btn btn-dark btn-lg rounded-0" th:href="@{/order/processOrder}">Finalizar
+								Pedido</a>
+							<button class="btn btn-outline-dark btn-lg rounded-0" data-bs-toggle="modal"
 								data-bs-target="#staticBackdrop" type="button">Cancelar</button>
 						</div>
 
@@ -179,8 +181,9 @@
 					<h6>Deseja realmente cancelar o pedido?</h6>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Desistir</button>
-					<a class="btn btn-outline-danger" th:href="@{/order/cancel}">Confirmar</a>
+					<button type="button" class="btn btn-outline-secondary rounded-0"
+						data-bs-dismiss="modal">Desistir</button>
+					<a class="btn btn-outline-danger rounded-0" th:href="@{/order/cancel}">Confirmar</a>
 				</div>
 			</div>
 		</div>
